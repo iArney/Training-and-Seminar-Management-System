@@ -59,12 +59,11 @@
   <!-- Sizes your content based upon application components -->
   <v-main style="background: #F6F6F6;">
 
-             <div class="card">
+             <div class="card-col">
                <v-card
                     elevation="2">
                     <img src="../src/assets/online-course 1.png" alt="eee">
-                    <span class="card">
-                    
+                    <span class="card-col">
                       Trainings
                     </span>
                     <span class="sub-head"><p>	&#40;scheduled&#41;</p></span>
@@ -76,7 +75,7 @@
                     <v-card
                     elevation="2">
                     <img src="../src/assets/online-course 2.png" alt="">
-                    <span class="card">
+                    <span class="card-col">
                     
                       Seminar
                     </span>
@@ -89,7 +88,7 @@
                     <v-card
                     elevation="2">
                     <img src="../src/assets/online-course 3.png" alt="">
-                    <span class="card">
+                    <span class="card-col">
                     
                       Exams 
                     </span>
@@ -102,7 +101,7 @@
                     <v-card
                     elevation="2">
                     <img src="../src/assets/online-course 4.png" alt="">
-                    <span class="card">
+                    <span class="card-col">
                     
                       Certificates
                     </span>
@@ -530,7 +529,7 @@ position: relative;
   top: 5px;
 }
 /* card icons ends! */
-.card{
+.card-col{
   /* color: #004b8e; */
   display: flex;
   /* margin-left: 2rem; */
