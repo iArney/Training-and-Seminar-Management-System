@@ -1,8 +1,7 @@
-import Vue from "vue"
-import { createApp } from 'vue'
-import {createPinia} from 'pinia'
+import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import {createPinia, PiniaVuePlugin} from "pinia"
 import vuetify from './plugins/vuetify'
 
 /* import the fontawesome core */
@@ -14,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
-
 /* add icons to the library */
 library.add(fas )
 
@@ -23,12 +21,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-Vue.config.productionTip = false
-
-
-/**Global state management 
- * @link https://pinia.vuejs.org/getting-started.html
- */
+Vue.use(PiniaVuePlugin)
 const pinia = createPinia()
 
-createApp(App).use(router).use(pinia).use(vuetify).mount('#app');
+new Vue({
+  el: '#app',
+  router,
+  vuetify,
+  pinia,
+  render: h => h(App)
+})
