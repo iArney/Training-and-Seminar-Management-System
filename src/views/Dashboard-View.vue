@@ -4,8 +4,6 @@ import NavigationDrawer from '@/components/NavigationDrawer.vue'
 
 import SideBanners from '@/components/SideBanners.vue'
 
-
-
 export default {
   name: "Dashboard-View",
   components: {FontAwesomeIcon,
@@ -185,11 +183,11 @@ export default {
           <!-- Sizes your content based upon application components -->
           <v-main style="background: #F6F6F6;">
 
-                    <div class="card">
+                    <div class="card-col">
                       <v-card
                             elevation="2">
                             <img src="@/assets/online-course 1.png" alt="eee">
-                            <span class="card">
+                            <span class="card-col">
                             
                               Trainings
                             </span>
@@ -202,7 +200,7 @@ export default {
                             <v-card
                             elevation="2">
                             <img src="@/assets/online-course 2.png" alt="">
-                            <span class="card">
+                            <span class="card-col">
                             
                               Seminar
                             </span>
@@ -215,7 +213,7 @@ export default {
                             <v-card
                             elevation="2">
                             <img src="@/assets/online-course 3.png" alt="">
-                            <span class="card">
+                            <span class="card-col">
                             
                               Exams 
                             </span>
@@ -228,7 +226,7 @@ export default {
                             <v-card
                             elevation="2">
                             <img src="@/assets/online-course 4.png" alt="">
-                            <span class="card">
+                            <span class="card-col">
                             
                               Certificates
                             </span>
@@ -534,7 +532,7 @@ position: relative;
   top: 5px;
 }
 /* card icons ends! */
-.card{
+.card-col{
   /* color: #004b8e; */
   display: flex;
   /* margin-left: 2rem; */
