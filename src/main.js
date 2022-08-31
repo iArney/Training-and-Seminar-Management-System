@@ -1,7 +1,8 @@
-import Vue from 'vue'
+import Vue from "vue"
+import { createApp } from 'vue'
+import {createPinia} from 'pinia'
 import App from './App.vue'
 import router from './router'
-import store from './store'
 import vuetify from './plugins/vuetify'
 
 /* import the fontawesome core */
@@ -24,9 +25,10 @@ Vue.config.productionTip = false
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+
+/**Global state management 
+ * @link https://pinia.vuejs.org/getting-started.html
+ */
+const pinia = createPinia()
+
+createApp(App).use(router).use(pinia).use(vuetify).mount('#app');
