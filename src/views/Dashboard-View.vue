@@ -147,7 +147,7 @@ export default {
         <div class="user-profile">
           <v-avatar size="45">
             <img
-              src="https://cdn.vuetifyjs.com/images/john.jpg"
+              src="https://cdn.vuetifyjs.com/images/john.webp"
               alt="userprofile"
             />
           </v-avatar>
@@ -167,7 +167,7 @@ export default {
     <v-main style="background: #f6f6f6">
       <div class="card-col">
         <v-card elevation="2">
-          <img src="@/assets/images/online-course 1.png" alt="eee" />
+          <img src="@/assets/images/online-course-1.webp" alt="eee" />
           <span class="card-col"> Trainings </span>
           <span class="sub-head"><p>&#40;scheduled&#41;</p></span>
           <v-avatar color="#FFFEEA" size="60">
@@ -175,7 +175,7 @@ export default {
           </v-avatar>
         </v-card>
         <v-card elevation="2">
-          <img src="@/assets/images/online-course 2.png" alt="" />
+          <img src="@/assets/images/online-course-2.webp" alt="" />
           <span class="card-col"> Seminar </span>
           <span class="sub-head"><p>&#40;scheduled&#41;</p></span>
           <v-avatar color="#FFFEEA" size="60"
@@ -183,7 +183,7 @@ export default {
           >
         </v-card>
         <v-card elevation="2">
-          <img src="@/assets/images/online-course 3.png" alt="" />
+          <img src="@/assets/images/online-course-3.webp" alt="" />
           <span class="card-col"> Exams </span>
           <span class="sub-head"><p>&#40;scheduled&#41;</p></span>
           <v-avatar color="#FFFEEA" size="60"
@@ -191,7 +191,7 @@ export default {
           >
         </v-card>
         <v-card elevation="2">
-          <img src="@/assets/images/online-course 4.png" alt="" />
+          <img src="@/assets/images/online-course-4.webp" alt="" />
           <span class="card-col"> Certificates </span>
           <span class="sub-head"><p>&#40;scheduled&#41;</p></span>
           <v-avatar color="#FFFEEA" size="60"
@@ -214,7 +214,7 @@ export default {
       <div class="home-container">
         <v-card class="mx-auto" max-width="344">
           <v-img
-            src="@/assets/images/educating-technologies.jpg"
+            src="@/assets/images/educating-technologies.webp"
             height="200px"
             width="800"
           ></v-img>
