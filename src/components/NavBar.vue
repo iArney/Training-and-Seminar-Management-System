@@ -63,7 +63,21 @@ export default {
 .btn-shadow {
   box-shadow: 0px 10px 20px rgba(242, 68, 5, 0.15);
 }
+
+a{
+    transition: font-size .1s;
+}
+
+btn{
+    transition: transform .1s;
+}
+
+btn:hover{
+    transform: scale(1.1)
+}
+
 a:hover{
-   text-shadow: 0.1px 0.3px 0.1px black;
+   font-size:18px;
+font-size-adjust: 20px;
 }
 </style>
