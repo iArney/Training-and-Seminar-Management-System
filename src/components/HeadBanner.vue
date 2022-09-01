@@ -1,10 +1,10 @@
 <template>
   <v-container id="Banner" fluid>
     <v-row no-gutters>
-      <v-col cols="6" md="7" sm="8" xs="12" class="pt-16">
+      <v-col cols="12" md="7" sm="8" xs="12" class="pt-16">
         <v-container fluid>
           <v-row no-gutters>
-            <v-col lg="11" sm="12">
+            <v-col lg="11" cols="12">
               <div class="mt-10 me-5">
                 <h1 class="lh-base xl-text">
                   Training And Seminars Management
@@ -35,7 +35,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col class="overflow-hidden" id="right" cols="6" md="5" sm="4">
+      <v-col class="overflow-hidden d-none d-sm-flex" id="right" cols="6" md="5" sm="4">
         <v-container>
           <v-row no-gutters>
             <v-col cols="11">
@@ -46,7 +46,7 @@
                 srcset=""
               />
             </v-col>
-            <v-col cols="1" class="d-flex align-center ps-10 pt-16 mt-16 pb-5">
+            <v-col cols="1" class="d-lg-flex d-none align-center ps-10 pt-16 mt-16 pb-5">
               <font-awesome-icon
                 class="deep--text float-right"
                 icon="fa-solid fa-star fs-"
