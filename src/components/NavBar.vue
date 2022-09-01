@@ -1,5 +1,5 @@
 <template>
-  <v-conatiner class="px-16 light shadow">
+  <v-conatiner class="px-16 light shadow" >
     <v-app-bar color="light" elevation="0" class="py-1" height="100px">
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <AppLogo />
@@ -68,16 +68,4 @@ a{
     transition: font-size .1s;
 }
 
-btn{
-    transition: transform .1s;
-}
-
-btn:hover{
-    transform: scale(1.1)
-}
-
-a:hover{
-   font-size:18px;
-font-size-adjust: 20px;
-}
 </style>
