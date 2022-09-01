@@ -185,6 +185,8 @@ export default {
           <!-- Sizes your content based upon application components -->
           <v-main style="background: #F6F6F6;">
 
+           
+
                     <div class="card">
                       <v-card
                             elevation="2">
@@ -325,7 +327,21 @@ export default {
 
 <style>
 
-
+.drop-menu{
+  width: 230px;
+  position: relative;
+  left: 2.2em;
+  top: -1rem;
+  height: 5rem;
+}
+.drop-menu:hover{
+  background: #FFFEEA;
+  color: #000;
+  margin: auto 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+}
 
 /* dash-board */
 .d-board-card-1,
@@ -364,8 +380,6 @@ position: relative;
   left: -3.6em;
   font-size: 1.5em;
   line-height: 4em;
-  
-
 }
 
 .d-board-card-1:hover,
