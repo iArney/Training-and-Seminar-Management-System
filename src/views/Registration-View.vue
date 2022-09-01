@@ -1,13 +1,10 @@
 <template>
-                
+  <div></div>
 </template>
 
 <script>
 export default {
-    name: 'AppBar',
-    data(){
-       
-    },
+  name: 'Registration-View'
 }
 </script>
 
