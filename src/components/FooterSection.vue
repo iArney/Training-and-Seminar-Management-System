@@ -1,5 +1,5 @@
 <template>
-  <v-container class="primary text-center fixed-bottom pt-16" fluid>
+  <v-container class="primary text-center pt-16" fluid>
     <p>
       This product is designed and maintained by e-Government Authority
       Tanzania
