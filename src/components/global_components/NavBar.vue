@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import AppLogo from "@/components/AppLogo.vue";
+import AppLogo from "./AppLogo.vue";
 
 export default {
   name: "NavBar",

@@ -5,12 +5,11 @@
         <ServiceCard />
       </v-col>
     </v-row>
-    
   </v-container>
 </template>
 
 <script>
-import ServiceCard from "@/components/ServiceCard.vue";
+import ServiceCard from "@/components/Microcomponents/ServiceCard.vue";
 
 export default {
     components:{

@@ -10,19 +10,23 @@
     <v-container fluid>
       <v-row class="text-center" no-gutters>
         <v-col
-          v-for="n in 6"
-          :key="n"
+          v-for="(module, index) in modules.modules"
+          :key="index"
           md="4"
           sm="6"
           cols="12"
           class="my-5 px-3"
         >
-          <ModuleCard />
+          <ModuleCard
+            :description="module.description"
+            :header="module.header"
+            :image="module.img"
+          />
         </v-col>
       </v-row>
     </v-container>
     <div class="ms-5 ps-5">
-        <StarDecoration class="float-start"/>
+      <StarDecoration class="float-start" />
       <!-- <font-awesome-icon
         class="deep--text float-start position-absolute"
         icon="fa-solid fa-star"
@@ -32,17 +36,14 @@
   </div>
 </template>
 
-<script>
-import ModuleCard from "@/components/ModuleCard";
+<script setup>
+import ModuleCard from "@/components/Microcomponents/ModuleCard";
 import BubbleDecoration from "@/components/decorations/BubbleDecoration";
-import StarDecoration from "@/components/decorations/StarDecoration"
-export default {
-  components: {
-    ModuleCard,
-    BubbleDecoration,
-    StarDecoration
-  },
-};
+import StarDecoration from "@/components/decorations/StarDecoration";
+import { useModulesStore } from "@/stores/modules";
+
+const modules = useModulesStore();
+
 </script>
 
 <style scoped>
