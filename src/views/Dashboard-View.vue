@@ -146,10 +146,7 @@ export default {
         <!-- </notifcation ends> -->
         <div class="user-profile">
           <v-avatar size="45">
-            <img
-              src="https://cdn.vuetifyjs.com/images/john.webp"
-              alt="userprofile"
-            />
+            <img src="@/assets/images/logo.webp" alt="userprofile" />
           </v-avatar>
           <v-badge
             bordered
@@ -211,6 +208,29 @@ export default {
         ></v-data-table>
       </template>
 
+      <!-- selectors check box table -->
+
+      <template>
+        <v-data-table
+          v-model="selected"
+          :headers="headers"
+          :items="desserts"
+          :single-select="singleSelect"
+          item-key="name"
+          show-select
+          class="elevation-1"
+        >
+          <template v-slot:top>
+            <v-switch
+              v-model="singleSelect"
+              label="Single select"
+              class="pa-3"
+            ></v-switch>
+          </template>
+        </v-data-table>
+      </template>
+      <!--/ selectors check box table -->
+
       <div class="home-container">
         <v-card class="mx-auto" max-width="344">
           <v-img
@@ -266,9 +286,25 @@ export default {
       >
     </v-footer>
   </v-app>
+
 </template>
 
 <style>
+.drop-menu {
+  width: 230px;
+  position: relative;
+  left: 2.2em;
+  top: -1rem;
+  height: 5rem;
+}
+.drop-menu:hover {
+  background: #fffeea;
+  color: #000;
+  margin: auto 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
 /* dash-board */
 .d-board-card-1,
 .d-board-card-2,
@@ -285,7 +321,7 @@ export default {
   position: relative;
 }
 /* dashboard arrangement */
-.d-board-card-7,
+/* .d-board-card-7,
 .ind-icon .dash-font {
   position: relative;
   left: -9px;
@@ -294,7 +330,7 @@ export default {
 .ind-icon .dash-font {
   position: relative;
   left: -9px;
-}
+} */
 
 .icons {
   position: absolute;
@@ -303,6 +339,7 @@ export default {
   left: -3.6em;
   font-size: 1.5em;
   line-height: 4em;
+  padding: auto;
 }
 
 .d-board-card-1:hover,
@@ -334,10 +371,12 @@ export default {
 
 .dash-font {
   font-size: 80%;
+  margin-left: 20px;
 }
 
 .ind-icon,
 .dash-font {
+  padding: auto;
   position: relative;
   left: 0.2px;
   top: -9px;
@@ -365,8 +404,9 @@ export default {
   width: 800px;
 }
 .home-container {
-  position: absolute;
-  right: 6.5rem;
+  position: relative;
+  right: -38rem;
+  top: 1.2rem;
 }
 
 .v-main {
@@ -451,13 +491,14 @@ export default {
 .v-card {
   text-align: center;
   font-weight: 600;
-  margin: 5rem 0rem;
+  margin: 4.5rem 0rem;
   width: 15rem;
   height: 7rem;
   align-items: center;
   justify-content: center;
   color: #004b8e;
   position: relative;
+  top: -10px;
 }
 /* card icons */
 .v-card img {
@@ -499,6 +540,7 @@ export default {
 }
 .side-banner {
   position: relative;
+  top: -5px;
 }
 .right-banner {
   position: absolute;
@@ -517,6 +559,7 @@ export default {
   .v-data-table {
     width: 42rem;
     left: 1rem;
+    top: 280px;
   }
   .right-banner {
     position: absolute;
@@ -534,7 +577,8 @@ export default {
     width: 673px;
   }
   .home-container {
-    right: 2rem;
+    right: -23rem;
+    top: -30px;
   }
   .user-profile {
     left: 39.5rem;
@@ -546,6 +590,9 @@ export default {
   .notification-container {
     margin-left: 105%;
     cursor: pointer;
+  }
+  .side-banner {
+    top: -29px;
   }
 }
 </style>
