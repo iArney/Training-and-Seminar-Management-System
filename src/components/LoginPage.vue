@@ -42,8 +42,8 @@
                 :rules="[rules.required, rules.min]"
                 :type="show1 ? 'text' : 'password'"
                 name="input-10-1"
-                label="Normal with hint text"
-                hint="At least 8 characters"
+                label="Enter Correct Password"
+                hint="Satisfactory!"
                 counter
                 @click:append="show1 = !show1"
               ></v-text-field>
@@ -112,7 +112,7 @@ export default {
 }
 .logo-icon::before {
   position: relative;
-  content: "login with your provided credentials";
+  content: "Login with your provided credentials";
   top: 48px;
   left: 175px;
   color: #0081c2;

@@ -12,6 +12,9 @@
         kuingia kwenye mfumo. Kwa msaada piga <strong> +255 764 292 299 </strong>au <strong>  +255 763 292
         299 </strong> 
       </span>
+      <span class="content-qn"> Have an account?</span>
+  <v-btn class="mr-btn" type="button" style="background-color: #FFF573;color:#004B8E;font-weight:600;" @click="submit"> LOGIN </v-btn>
+
     </div>
       <img src="@/assets/images/back-card.webp" alt="" />
     </div>
@@ -24,8 +27,9 @@
         </div>
         <!-- form -->
                        <template>
-  <v-form v-model="valid">
+                        <form action="">
     <div class="reg-form">
+      
   <v-container>
       <v-row>
         <v-col
@@ -37,6 +41,8 @@
             :rules="nameRules"
             :counter="10"
             label="First name"
+            filled
+            class="fields-register"
             required
           ></v-text-field>
         </v-col>
@@ -50,6 +56,8 @@
             :rules="nameRules"
             :counter="10"
             label="Last name"
+            filled
+            class="fields-register"
             required
           ></v-text-field>
         </v-col>
@@ -62,70 +70,102 @@
             v-model="email"
             :rules="emailRules"
             label="E-mail"
+            filled
             required
+            class="fields-register"
           ></v-text-field>
         </v-col>
       </v-row>
     </v-container>
     </div>
-  
-  </v-form>
+
+    <!-- password matching -->
+
+    <!-- <v-app id="inspire"> -->
+    <v-container>
+      <v-row justify="center" >
+        
+        <v-col cols="6" >
+          <!-- password -->
+          <v-text-field
+             v-model="password"
+             label="Password"
+             prepend-icon="mdi-lock-outline"
+             type="password"
+             filled
+             :rules="[required, min6]"
+             :counter="6"
+            >
+            <template v-slot:append>
+              <v-icon
+                 v-if="successPass"
+                 color="green"
+                 >{{ passRule }}</v-icon
+                >
+              <v-icon
+                 v-if="!successPass"
+                 color="red"
+                 >{{ passRule }}</v-icon
+                >
+            </template>
+          </v-text-field>
+        </v-col>
+        <v-col cols="6">
+          <!-- password1 -->
+          <v-text-field
+             v-model="password1"
+             label="Verify Password"
+             prepend-icon="mdi-lock-outline"
+             type="password"
+             filled
+             :rules="[required, min6, matchingPasswords ]"
+             :counter="6"
+            >
+            <template v-slot:append>
+              <v-icon
+                v-if="successPass1"
+                color="green"
+                >{{ passRule1 }}</v-icon
+              >
+              <v-icon
+                 v-if="!successPass1"
+                 color="red"
+                 >{{ passRule1 }}</v-icon
+              >
+            </template>
+          </v-text-field>
+        </v-col>
+      </v-row>
+    </v-container>
+  <!-- </v-app> -->
+  <!-- password matching ends -->
+
+  <!-- select box starts -->
+                 <v-col cols="12">
+          <v-autocomplete
+            v-model="inst_value"
+            :items="inst_items"
+            dense
+            filled
+            label="-- Institution --"
+          ></v-autocomplete>
+        </v-col>
+        <!-- departments below -->
+           <v-col cols="12">
+          <v-autocomplete
+            v-model="dep_value"
+            :items="dep_items"
+            dense
+            filled
+            label="-- Department --"
+          ></v-autocomplete>
+        </v-col>
+        
+  <!-- /select box ends -->
+  <v-btn class="mr-4" type="submit" style="background-color: #0081c2;color:white;font-weight:600;" @click="submit"> SUBMIT </v-btn>
+  </form>
 </template>
         <!-- /form -->
-        
-      <!-- logo starts -->
-      <!-- <div class="logo-icon" style="padding: 20px; margin-left: 21rem">
-        <img src="@/assets/images/logo.webp" alt="tsms-logo" />
-       </div> -->
-      <!-- logo ends -->
-
-      <!-- login amico image -->
-      <!-- <div class="image-icon">
-        <img
-          src="@/assets/images/Login-amico.webp"
-          width="430"
-          height="430"
-          alt=""
-        />
-      </div> -->
-      <!-- login amico image ends -->
-
-      <!-- form inputs starts -->
-      <div class="form-inputs">
-        <form action="">
-          <!-- <v-row>
-            <v-col cols="12" md="4" class="inputs">
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-                style="background-color: #fffeea"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="4" class="inputs">
-              <v-text-field
-                style="background-color: #fffeea"
-                required
-                v-model="password"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'password'"
-                name="input-10-1"
-                label="Normal with hint text"
-                hint="At least 8 characters"
-                counter
-                @click:append="show1 = !show1"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-
-          <v-btn class="mr-4" type="submit" @click="submit"> LOGIN </v-btn> -->
-        </form>
-      </div>
-      <!-- form inputs ends -->
     </v-card>
   </v-main>
 </template>
@@ -147,8 +187,79 @@ export default {
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
-    }),
 
+      //select box scripting
+        inst_items: ['e-Government Authority', 'tcra', 'nmb-bank', 'unyamwezi'],
+        inst_value: null,
+        dep_items: ['Information Communication Technology', 'Law', 'Human Resource', 'Sports & Entertainment'],
+        depp_value: null,
+      //select box scripting ends
+      
+
+
+      // password matching
+      password: '',
+      password1: '',
+      successPass: false,
+      successPass1: false
+    
+  }),
+  methods: {
+    required: function(value) {
+      if (value) {
+        return true;
+      } else {
+        return 'This field is required.';
+      }
+    },
+    min6: function(value) {
+      if (value.length >= 6) {
+        return true;
+      } else {
+        return 'Password should have more than 6 characters.';
+      }
+    },
+    matchingPasswords: function() {
+      if (this.password === this.password1) {
+        return true;
+      } else {
+        return 'Passwords does not match.';
+      }
+    },
+  },
+  // computed: {
+  //   passRule: function() {
+  //     if (this.password === '') {
+  //       // field is empty
+  //       this.successPass = false;
+  //       return '';
+  //     } else if (this.min6(this.password) === true) {
+  //       // password ok
+  //       this.successPass = true;
+  //       return 'mdi-check';
+  //     } else {
+  //       // password wrong
+  //       this.successPass = false;
+  //       return 'mdi-close';
+  //     }
+  //   },
+    // passRule1: function() {
+    //   if (this.password1 === '') {
+    //     // field is empty
+    //     this.successPass1 = false;
+    //     return '';
+    //   } else if (this.min6(this.password1) === true && this.matchingPasswords() === true) {
+    //     // password ok
+    //     this.successPass1 = true;
+    //     return 'mdi-check';
+    //   } else {
+    //     // password wrong
+    //     this.successPass1 = false;
+    //     return 'mdi-close';
+    //   }
+    // password matching ends
+    
+        
 
 
 
@@ -172,7 +283,7 @@ export default {
   //       this.$v.$touch();
   //     },
   //   },
-};
+}
 </script>
 
 <style>
@@ -208,7 +319,7 @@ export default {
   content: "login with your provided credentials";
   top: 48px;
   left: 175px;
-  color: #0081c2;
+  color: #0054c2;
 }
 
 /* image-card */
@@ -227,10 +338,27 @@ export default {
     width: 24rem;
     line-height: 30px;
 }
+.card-content .v-btn{
+  position: relative;
+  top: 100px;
+  left: 56%;
+}
+.card-content .v-btn:hover{
+  padding: 20px auto;
+}
 .content{
     position: relative;
     left: 10%;
     top: 40px;
+}
+
+.content-qn{
+  position: absolute;
+  top: 400px;
+  left: 185px;
+}
+.mr-btn{
+  margin-top: 2rem;
 }
 /* card-contents ends */
 
@@ -253,6 +381,20 @@ export default {
    background: #004B8E;
    position: absolute;
    top: 30px;
+   bottom: 0;
+   left: 0;
+}
+
+.fields-register::after {
+   display: block;
+   content: '';
+   border: 2px;
+   border-radius: 8px;
+   width: 2%;
+   height: 56px;
+   background: #004B8E;
+   position: absolute;
+   top: 1px;
    bottom: 0;
    left: 0;
 }
