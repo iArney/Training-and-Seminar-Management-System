@@ -1,0 +1,24 @@
+/*** This file contains CSS ***/
+
+/*** Effects *****/
+/** Hover effect ****/
+/*
+*These are css effects on links and buttons when hovered
+*/
+btn{
+    transition: transform .1s;
+}
+
+btn:hover{
+    transform: scale(1.1)
+}
+
+a:hover{
+   font-size:18px;
+font-size-adjust: 20px;
+}
+
+/*** Imagery ****/
+.object-cover {
+    object-fit: cover;
+}

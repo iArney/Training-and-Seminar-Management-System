@@ -1,5 +1,5 @@
 <template>
-  <v-conatiner class="px-16 light shadow">
+  <v-conatiner class="px-16 light shadow" >
     <v-app-bar color="light" elevation="0" class="py-1" height="100px">
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <AppLogo />
@@ -63,7 +63,9 @@ export default {
 .btn-shadow {
   box-shadow: 0px 10px 20px rgba(242, 68, 5, 0.15);
 }
-a:hover{
-   text-shadow: 0.1px 0.3px 0.1px black;
+
+a{
+    transition: font-size .1s;
 }
+
 </style>

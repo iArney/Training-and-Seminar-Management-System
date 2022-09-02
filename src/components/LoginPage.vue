@@ -50,7 +50,7 @@
             </v-col>
           </v-row>
 
-          <v-btn class="mr-4" type="submit" @click="submit"> submit </v-btn>
+          <v-btn class="mr-4" type="submit" @click="submit"> LOGIN </v-btn>
         </form>
       </div>
       <!-- form inputs ends -->
@@ -113,7 +113,7 @@ export default {
 .logo-icon::before {
   position: relative;
   content: "login with your provided credentials";
-  top: 20px;
+  top: 48px;
   left: 175px;
   color: #0081c2;
 }

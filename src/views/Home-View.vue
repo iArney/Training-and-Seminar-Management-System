@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeadBanner />
     <h1>{{ counter.count }}</h1>
     <button @click="counter.count++" class="btn btn-success mx-2">
       Increament
@@ -13,6 +14,7 @@
 
 <script setup>
 import { useCounterStore } from "@/stores/counter";
+import HeadBanner from  "@/components/HeadBanner";
 
 const counter = useCounterStore();
 
