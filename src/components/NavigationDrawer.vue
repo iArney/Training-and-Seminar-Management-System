@@ -109,7 +109,7 @@
         <!-- /zz -->
         <div class="d-board-card-3">
           <font-awesome-icon icon="fa-book-open" class="ind-icon" />
-          <span class="dash-font">Report &#38; Docs </span>
+          <span class="dash-font">Report &#38; Doc </span>
         </div>
         <div class="d-board-card-4">
           <font-awesome-icon icon="fa-solid fa-tools" class="ind-icon" />

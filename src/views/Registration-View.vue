@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <div>
+     <RegistrationPage />
+  </div>
 </template>
 
 <script>
+import RegistrationPage from '@/components/RegistrationPage.vue'
 export default {
-  name: 'Registration-View'
+  name: 'Registration-View',
+  components: {RegistrationPage},
 }
 </script>
 
