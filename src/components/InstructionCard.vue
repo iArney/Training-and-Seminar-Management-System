@@ -4,7 +4,7 @@
       <div
         class="marker position-absolute top-0 start-0 translate-middle deep rounded-circle"
       >
-        <span class="white--text">{{number}}</span>
+        <span class="white--text">{{ number }}</span>
       </div>
       <v-container>
         <v-row>
@@ -14,9 +14,12 @@
               >https://tsms.ega.go.tz</router-link
             >
           </v-col>
-          <v-col cols="4"> 
+          <v-col cols="4">
             <v-img
-            src="@/assets/images/type.webp" max-height="68" max-width="68">
+              src="@/assets/images/type.webp"
+              max-height="68"
+              max-width="68"
+            >
             </v-img>
           </v-col>
         </v-row>
@@ -27,9 +30,9 @@
 
 <script>
 export default {
-    props: {
-        number: Number,
-    }
+  props: {
+    number: Number,
+  },
 };
 </script>
 

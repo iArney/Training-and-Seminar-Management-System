@@ -21,7 +21,7 @@
           >Login</router-link
         >
         <router-link
-          to="/register"
+          to="/registration"
           class="text-decoration-none dark--text fw-bold mx-3"
         >
           <btn class="btn white btn-shadow deep--text"> Register </btn>

@@ -2,16 +2,23 @@
 body {
   font-family: "Lato", sans-serif;
 }
+/** Animations ***/
+
+/***
 /*** Effects *****/
+/**decorations***/
+/*
+*These are css effects on decorations found in the website
+*/
 /** Hover effect ****/
 /*
 *These are css effects on links and buttons when hovered
 */
-btn {
+.btn {
   transition: transform 0.1s;
 }
 
-btn:hover {
+.btn:hover {
   transform: scale(1.1);
 }
 
@@ -21,10 +28,13 @@ a:hover {
 }
 
 /*** Imagery ****/
+/*
+*These styles how an image covers its parent contain 
+**/
 .object-cover {
   object-fit: cover;
 }
 
-.object-contain{
-    object-fit: contain;
+.object-contain {
+  object-fit: contain;
 }

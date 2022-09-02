@@ -1,5 +1,11 @@
 <template>
-  <div id="modules-section" class="text-center py-16">
+  <div id="modules-section" class="text-center py-16 position-relative">
+    <v-container class="position-relative mx-auto">
+      <BubbleDecoration
+        class="d-none d-sm-block position-absolute top-0 start-0"
+        :size="48"
+      />
+    </v-container>
     <h1 class="mt-16 fw-bold border-deep pisition-relative">TSMS Modules</h1>
     <v-container fluid>
       <v-row class="text-center" no-gutters>
@@ -16,20 +22,25 @@
       </v-row>
     </v-container>
     <div class="ms-5 ps-5">
-      <font-awesome-icon
+        <StarDecoration class="float-start"/>
+      <!-- <font-awesome-icon
         class="deep--text float-start position-absolute"
         icon="fa-solid fa-star"
         size="2xl"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
 import ModuleCard from "@/components/ModuleCard";
+import BubbleDecoration from "@/components/decorations/BubbleDecoration";
+import StarDecoration from "@/components/decorations/StarDecoration"
 export default {
   components: {
     ModuleCard,
+    BubbleDecoration,
+    StarDecoration
   },
 };
 </script>
