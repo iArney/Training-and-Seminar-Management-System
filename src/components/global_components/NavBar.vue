@@ -13,8 +13,7 @@
         <router-link
           to="/modules"
           class="text-decoration-none dark--text fw-bold mx-3 d-none d-sm-inline-block"
-          >Modules <font-awesome-icon icon="fa-solid fa-caret-down"
-        /></router-link>
+          >Modules </router-link>
         <router-link
           to="/login"
           class="text-decoration-none dark--text fw-bold mx-3"
@@ -24,7 +23,7 @@
           to="/registration"
           class="text-decoration-none dark--text fw-bold mx-3"
         >
-          <btn class="btn white btn-shadow deep--text"> Register </btn>
+          <btn class="btn zoom white btn-shadow deep--text"> Register </btn>
           <v-menu  left bottom>
             <template  v-slot:activator="{ on, attrs }">
               <v-btn class="d-sm-none d-inline-block" icon v-bind="attrs" v-on="on">

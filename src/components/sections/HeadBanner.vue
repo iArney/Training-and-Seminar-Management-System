@@ -21,7 +21,7 @@
                 <TriangleDecoration />
                 <div class="mt-5 ms-16 ps-16">
                   <button
-                    class="btn btn-lg deep white--text border rounded-pill py-3 px-10"
+                    class="zoom btn btn-lg deep white--text border rounded-pill py-3 px-10"
                   >
                     Read More...
                   </button>

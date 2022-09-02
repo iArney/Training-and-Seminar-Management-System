@@ -1,7 +1,7 @@
 <template>
   <v-container class="bg-golden pt-16" fluid>
     <v-row>
-      <v-col lg="6" sm="8" cols="12">
+      <v-col lg="6" md="8" class="order-sm-last order-xs-last" cols="12">
         <h1 class="deep--text fw-bolder text-center">How do I use TSMS?</h1>
         <v-container>
           <v-row>
@@ -10,10 +10,10 @@
               cols="12"
               class="mx-auto"
               v-for="(instruction, index) in store.instructions"
-              :key="index+1"
+              :key="index + 1"
             >
               <instructionCard
-                :number="index+1"
+                :number="index + 1"
                 :header="instruction.header"
                 :image="instruction.img"
               />
@@ -21,9 +21,9 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col lg="6" sm="4">
+      <v-col lg="6" md="4">
         <v-img
-          class="object-contain img-fluid"
+          class="object-contain img-fluid mx-auto"
           max-width="631"
           src="@/assets/images/question.webp"
         />
@@ -37,7 +37,6 @@ import InstructionCard from "@/components/Microcomponents/InstructionCard.vue";
 import { useInstructionsStore } from "@/stores/usageInstructions";
 
 const store = useInstructionsStore();
-
 </script>
 
 <style>

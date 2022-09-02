@@ -14,12 +14,14 @@ body {
 /*
 *These are css effects on links and buttons when hovered
 */
-.btn {
-  transition: transform 0.1s;
+.zoom, a {
+  transition: transform 0.2s ease-in-out;
 }
 
-.btn:hover {
+.zoom:hover {
   transform: scale(1.1);
+  cursor: pointer;
+  
 }
 
 a:hover {
