@@ -10,10 +10,10 @@
           class="text-decoration-none dark--text fw-bold mx-3 d-none d-sm-inline-block"
           >Home</router-link
         >
-        <router-link
-          to="/modules"
+        <a
+          href="#modules"
           class="text-decoration-none dark--text fw-bold mx-3 d-none d-sm-inline-block"
-          >Modules </router-link>
+          >Modules </a>
         <router-link
           to="/login"
           class="text-decoration-none dark--text fw-bold mx-3"

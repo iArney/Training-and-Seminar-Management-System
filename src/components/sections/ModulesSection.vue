@@ -1,5 +1,5 @@
 <template>
-  <div id="modules-section" class="text-center py-16 position-relative">
+  <div id="modules" class="text-center py-16 position-relative">
     <v-container class="position-relative mx-auto">
       <BubbleDecoration
         class="d-none d-sm-block position-absolute top-0 start-0"
@@ -47,7 +47,7 @@ const modules = useModulesStore();
 </script>
 
 <style scoped>
-#modules-section {
+#modules {
   background: url(@/assets/images/flag-tanzania.webp);
   background-size: cover;
   background-repeat: no-repeat;

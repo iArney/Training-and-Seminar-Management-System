@@ -20,11 +20,12 @@
                 </p>
                 <TriangleDecoration />
                 <div class="mt-5 ms-16 ps-16">
-                  <button
-                    class="zoom btn btn-lg deep white--text border rounded-pill py-3 px-10"
+                  <a
+                    href="#modules"
+                    class="zoom btn btn-lg deep white--text border rounded-pill py-3 px-10 text-decoration-none"
                   >
                     Read More...
-                  </button>
+                  </a>
                 </div>
               </div>
             </v-col>
@@ -50,8 +51,8 @@
               cols="1"
               class="d-lg-flex d-none align-center ps-10 pt-16 mt-16 pb-5"
             >
-            <!-- Star deocration stays here -->
-             <StarDecoration class="float-right"/>
+              <!-- Star deocration stays here -->
+              <StarDecoration class="float-right" />
             </v-col>
           </v-row>
         </v-container>
