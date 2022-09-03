@@ -8,14 +8,20 @@
 
 <style></style>
 
-<script>
+<script setup>
 import Footer from "@/components/global_components/FooterSection.vue";
 import NavBar from "@/components/global_components/NavBar.vue";
 
-export default {
-  components: {
-    NavBar,
-    Footer,
-  },
-};
+import { useInstituionStore } from "@/stores/apiTestStore";
+
+const store = useInstituionStore();
+store.getInstitutions();
+console.log(store.institutions);
+//  console.log("clicked");
+// export default {
+//   components: {
+//     NavBar,
+//     Footer,
+//   },
+// };
 </script>

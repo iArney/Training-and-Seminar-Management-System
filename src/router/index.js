@@ -65,7 +65,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   //store the from route in local storage
-
   for (const record of to.matched) {
     /*
      *Check if page exists else show a 404 error page
@@ -74,7 +73,6 @@ router.beforeEach((to, from, next) => {
      * If route doesnot require auth then proceed
      */
     if (!record.meta.requiresAuth) {
-      console.log(to.name);
       return next();
     }
     /**
