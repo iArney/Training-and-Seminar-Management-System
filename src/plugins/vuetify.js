@@ -9,7 +9,7 @@ export default new Vuetify({
           light: {
             danger: "#C24600",
             dark: "#2D2D2D",
-            deep: "#004B6E",
+            deep: "#004B8E",
             light: "#F5F9FF",
             link: "#2E36FF",
             lightGrey: "#FCFBFB",

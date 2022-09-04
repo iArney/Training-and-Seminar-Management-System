@@ -1,33 +1,33 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import vuetify from './plugins/vuetify'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import { createPinia, PiniaVuePlugin } from "pinia";
+import vuetify from "./plugins/vuetify";
 
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { fas } from '@fortawesome/free-solid-svg-icons'
-
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(fas )
-Vue.use(PiniaVuePlugin)
-const pinia = createPinia()
+library.add(fas);
+
+Vue.use(PiniaVuePlugin);
+const pinia = createPinia();
 /* add font awesome icon component */
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
+  vuetify,
   router,
   pinia,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");
