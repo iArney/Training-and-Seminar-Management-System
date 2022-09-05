@@ -3,7 +3,7 @@
     <v-card class="login-card" elevation="1" outlined>
       <!-- logo starts -->
       <div class="logo-icon" style="padding: 20px; margin-left: 21rem">
-        <img src="@/assets/images/logo.webp" alt="tsms-logo" />
+        <img src="@/assets/images/official-logo.webp" width="200" alt="tsms-logo" />
       </div>
       <!-- logo ends -->
 
@@ -50,7 +50,7 @@
             </v-col>
           </v-row>
 
-          <v-btn class="mr-4" type="submit" @click="submit"> LOGIN </v-btn>
+          <v-btn class="mr-4" type="submit" style="background-color:#004B8E;color:#fff;margin-top:50px;" @click="submit"> LOGIN </v-btn>
         </form>
       </div>
       <!-- form inputs ends -->
@@ -102,20 +102,22 @@ export default {
 /* login card starts */
 .login-card {
   margin: 10rem auto;
-  height: 32rem;
+  height: 36rem;
   width: 62rem;
   text-align: center;
 }
 .logo-icon {
   position: relative;
   left: -2.5rem;
+  
 }
 .logo-icon::before {
   position: relative;
   content: "Login with your provided credentials";
-  top: 48px;
-  left: 175px;
-  color: #0081c2;
+  top: 115px;
+  left: 225px;
+  color: #004B8E;
+  
 }
 /* /login card ends */
 
@@ -123,6 +125,7 @@ export default {
 .inputs {
   position: relative;
   left: 37rem;
+  top: 3rem;
 }
 /* form inputs ends */
 /* image-icon starts */
@@ -137,5 +140,22 @@ export default {
   position: relative;
   left: 17rem;
   top: 2rem;
+}
+
+/* rensponsiveness */
+@media(min-width: 800px and 900px){
+  .v-main {
+    height: 100vh;
+    max-width: 1700px;
+  background-attachment: fixed;
+}
+
+
+  .login-card {
+    margin: 10rem auto;
+    height: 36rem;
+    width: 60rem;
+    text-align: center;
+}
 }
 </style>
