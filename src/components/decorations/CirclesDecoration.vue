@@ -15,7 +15,7 @@ export default {};
   width: 226px;
   height: 232.73px;
   background: rgba(255, 255, 255, 0.3);
-  animation: waves 7s linear forwards infinite;
+  animation: waves 7s ease-in-out forwards infinite;
   /* border: 45px solid rgba(255, 255, 255, 0.2); */
 }
 .innercircle {

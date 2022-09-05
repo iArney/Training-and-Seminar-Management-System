@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "@/views/Home-View.vue";
 //replace isLogged in with an actual state;
 const isLoggedIn = true;
-const hasPermission = false;
+const hasPermission = true;
 Vue.use(VueRouter);
 
 const routes = [

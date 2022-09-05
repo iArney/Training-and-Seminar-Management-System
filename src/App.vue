@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar />
+   
     <router-view />
     <Footer />
   </v-app>
@@ -10,7 +10,6 @@
 
 <script setup>
 import Footer from "@/components/global_components/FooterSection.vue";
-import NavBar from "@/components/global_components/NavBar.vue";
 
 // import { useInstituionStore } from "@/stores/apiTestStore";
 

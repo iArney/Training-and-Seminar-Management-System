@@ -1,35 +1,39 @@
 <template>
   <div>
-    <v-container
-      class="services-container primary py-16 position-relative overflow-hidden"
-      fluid
-    >
-      <CirclesDecoration class="top-0 start-100 translate-middle" />
-
-      <v-row class="mx-auto mb-16 pb-16">
-        <v-col
-          md="4"
-          sm="6"
-          cols="12"
-          class="my-5"
-          v-for="(service, index) in store.services"
-          :key="index"
-        >
-          <div>
-            <ServiceCard
-              :image="service.img"
-              :header="service.header"
-              :background="service.background"
-            />
-          </div>
-        </v-col>
-      </v-row>
-      <CirclesDecoration class="bottom-0 start-0" />
-    </v-container>
+    <NavBar />
+    <div>
+      <v-container
+        class="services-container primary py-16 position-relative overflow-hidden"
+        fluid
+      >
+        <CirclesDecoration class="top-0 start-100 translate-middle" />
+        <v-row class="mx-auto mb-16 pb-16">
+          <v-col
+            md="4"
+            sm="6"
+            cols="12"
+            class="my-5"
+            v-for="(service, index) in store.services"
+            :key="index"
+          >
+            <div>
+              <ServiceCard
+                :image="service.img"
+                :header="service.header"
+                :background="service.background"
+                :linkTo="service.link"
+              />
+            </div>
+          </v-col>
+        </v-row>
+        <CirclesDecoration class="bottom-0 start-0" />
+      </v-container>
+    </div>
   </div>
 </template>
 
 <script setup>
+import NavBar from "@/components/global_components/NavBar.vue";
 import ServiceCard from "@/components/Microcomponents/ServiceCard.vue";
 import CirclesDecoration from "@/components/decorations/CirclesDecoration";
 import { useServicesStore } from "@/stores/servicesStore";
