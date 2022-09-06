@@ -5,6 +5,10 @@
     elevation="1"
     outlined
   >
+    <div v-if="error !== ''" class="danger--text mb-5">
+      <img src="@/assets/icons/info 1.svg" alt="" srcset="" class="me-3" />
+      {{ error }}
+    </div>
     <div>
       <div class="register-txt">
         <h4 class="registration-header fw-bolder border-deep pisition-relative">
@@ -107,7 +111,10 @@
               @click="submit"
               type="button"
             >
-              SUBMIT
+              <div v-if="loading" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <span v-else>SUBMIT</span>
             </button>
           </v-row>
         </v-container>
@@ -119,6 +126,7 @@
 </template>
 
 <script>
+import { registerUser } from "@/graphQLqueries/uaaQueries";
 import TextInput from "@/components/Microcomponents/TextInput.vue";
 import SelectInput from "@/components/Microcomponents/SelectInput.vue";
 import { useRegisterStore } from "@/stores/registerStore";
@@ -145,7 +153,9 @@ export default {
       nida: "",
       password: "",
       confirmPassword: "",
+      error: "",
       passwordsMatch: true,
+      loading: false,
     };
   },
   watch: {
@@ -164,15 +174,55 @@ export default {
         this.passwordsMatch = false;
       }
     },
-    submit(e) {
+    async submit(e) {
       e.preventDefault();
+      
       if (
         this.registerStore.validated &&
-        this.registerStore.invalidFields == []
+        this.registerStore.invalidFields.length == 0
       ) {
-        //post data to back end
-        console.log("hello");
+        const userData = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          username: this.username,
+          email: this.email,
+          phone: this.phone,
+          institution: this.institution,
+          designation: this.designation,
+          nida: this.nida,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+        };
+        this.laoding = true;
+        const response = await registerUser(userData);
+        this.laoding = false;
+        console.log(response);
+        //store response.token, response.refreshtoken in local storage
+        //check if success redirect to login
+        if (response.success) {
+          this.$router.push("/login");
+        } else {
+          if (response.errors?.email) {
+            this.error = response.errors?.email[0]?.message;
+            return;
+          }
+          if (response.errors?.username) {
+            this.error = response.errors?.username[0]?.message;
+            return;
+          }
+          if (response.errors?.password) {
+            this.error = response.errors?.password[0]?.message;
+            return;
+          }
+
+          console.log(response.errors)
+          this.error = "Failed to register user, please try again";
+        }
       }
+
+      //post data to back end
+      // console.log("hello");
+      // registerUser(userData);
     },
   },
 };
@@ -198,7 +248,7 @@ input {
   border-right: hidden !important;
   border-left: 3px solid #004b8e !important;
   border-bottom: hidden !important;
-  /* background-color: #eee; */
+
 }
 
 .btn-submit {

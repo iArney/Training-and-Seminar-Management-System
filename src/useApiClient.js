@@ -13,10 +13,15 @@ const apiClient = async (query) => {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({
+      query,
+      // variables: {
+      //   input: inputData,
+      // },
+    }),
   });
 
-  return response
-}
+  return response;
+};
 
 export default apiClient;
