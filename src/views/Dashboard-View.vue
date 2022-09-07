@@ -1,6 +1,6 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import NavigationDrawer from "@/components/NavigationDrawer.vue";
+import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 
 import SideBanners from "@/components/SideBanners.vue";
 
@@ -232,43 +232,45 @@ export default {
       <!--/ selectors check box table -->
 
       <div class="home-container">
-        <v-card class="mx-auto" max-width="344">
-          <v-img
-            src="@/assets/images/educating-technologies.webp"
-            height="200px"
-            width="800"
-          ></v-img>
+        <router-link to="/about-event">
+          <v-card class="mx-auto" max-width="344">
+            <v-img
+              src="@/assets/images/educating-technologies.webp"
+              height="200px"
+              width="800"
+            ></v-img>
 
-          <v-card-title> @TSMS User Script </v-card-title>
+            <v-card-title> @TSMS User Script </v-card-title>
 
-          <v-card-subtitle> enhanced trainings and seminars </v-card-subtitle>
+            <v-card-subtitle> enhanced trainings and seminars </v-card-subtitle>
 
-          <v-card-actions>
-            <v-btn color="orange lighten-2" text> Explore </v-btn>
+            <v-card-actions>
+              <v-btn color="orange lighten-2" text> Explore </v-btn>
 
-            <v-spacer></v-spacer>
+              <v-spacer></v-spacer>
 
-            <v-btn icon @click="show = !show">
-              <v-icon>{{
-                show ? "mdi-chevron-up" : "mdi-chevron-down"
-              }}</v-icon>
-            </v-btn>
-          </v-card-actions>
+              <v-btn icon @click="show = !show">
+                <v-icon>{{
+                  show ? "mdi-chevron-up" : "mdi-chevron-down"
+                }}</v-icon>
+              </v-btn>
+            </v-card-actions>
 
-          <v-expand-transition>
-            <div v-show="show">
-              <v-divider></v-divider>
+            <v-expand-transition>
+              <div v-show="show">
+                <v-divider></v-divider>
 
-              <v-card-text>
-                Mfumo wa Usimamizi wa Mafunzo na Semina &#40;TSMS&#41;
-                umetengenezwa kwa ajili ya utunzaji kumbukumbu, kutoa taarifa za
-                mafunzo na kufuatilia taarifa za wakurufunzi na wakufunzi
-                zinazohusu mafunzo, semina, warsha,mikutano ya mwaka na vikao
-                vya mifumo na huduma za Mamlaka ya Serikali Mtandao
-              </v-card-text>
-            </div>
-          </v-expand-transition>
-        </v-card>
+                <v-card-text>
+                  Mfumo wa Usimamizi wa Mafunzo na Semina &#40;TSMS&#41;
+                  umetengenezwa kwa ajili ya utunzaji kumbukumbu, kutoa taarifa
+                  za mafunzo na kufuatilia taarifa za wakurufunzi na wakufunzi
+                  zinazohusu mafunzo, semina, warsha,mikutano ya mwaka na vikao
+                  vya mifumo na huduma za Mamlaka ya Serikali Mtandao
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </router-link>
       </div>
 
       <!-- Provides the application the proper gutter -->
@@ -286,7 +288,6 @@ export default {
       >
     </v-footer>
   </v-app>
-
 </template>
 
 <style>

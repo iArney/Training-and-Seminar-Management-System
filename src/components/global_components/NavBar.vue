@@ -38,18 +38,21 @@
             </v-list>
           </v-menu>
         </router-link>
+        <!-- <UserDetails /> -->
       </div>
     </v-app-bar>
   </div>
 </template>
 
 <script>
+// import UserDetails from '../Microcomponents/userDetails.vue';
 import AppLogo from "./AppLogo.vue";
 
 export default {
   name: "NavBar",
   components: {
     AppLogo,
+    // UserDetails,
   },
 };
 </script>

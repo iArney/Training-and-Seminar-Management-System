@@ -1,9 +1,12 @@
+import { useUserStore } from "@/stores/userStore";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "@/views/Home-View.vue";
 //replace isLogged in with an actual state;
-const isLoggedIn = true;
+
+// const isLoggedIn = true;
 const hasPermission = true;
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,29 +16,41 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/login",
-    name: "login",
+    path: "/about-event",
+    name: "about-event",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/AboutEvent-View.vue"),
+  },
+  {
+    path: "/eventcollection",
+    name: "eventcollection",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/EventCollection-View.vue"),
+  },
+  {
+    path: "/applicationform",
+    name: "applicationform",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/ApplicationForm-View.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/Login-View.vue"),
   },
   {
     path: "/registration",
     name: "registration",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/Registration-View.vue"),
   },
   {
     path: "/dashboard",
     name: "dashboard",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Dashboard-View.vue"),
   },
@@ -64,22 +79,24 @@ const router = new VueRouter({
  */
 
 router.beforeEach((to, from, next) => {
+  const store = useUserStore();
+
   //store the from route in local storage
-  for (const record of to.matched) {
+  for (const route of to.matched) {
     /*
      *Check if page exists else show a 404 error page
      */
     /***
      * If route doesnot require auth then proceed
      */
-    if (!record.meta.requiresAuth) {
+    if (!route.meta.requiresAuth) {
       return next();
     }
     /**
      * if it needs auth, check the state of the user if is logged in
      * if not redirect to login page
      */
-    if (!isLoggedIn) {
+    if (!store.isAuthenticated) {
       return next("/login");
     }
     /* If the user is logged in check if he has permission to access resources
