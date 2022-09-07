@@ -1,6 +1,6 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import NavigationDrawer from "@/components/NavigationDrawer.vue";
+import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 
 import SideBanners from "@/components/SideBanners.vue";
 
@@ -233,6 +233,7 @@ export default {
       <!--/ selectors check box table -->
 
       <div class="home-container">
+
         <v-card class="mx-auto" max-width="344">
           <v-img
             src="@/assets/images/educating-technologies.webp"
@@ -270,6 +271,9 @@ export default {
             </div>
           </v-expand-transition>
         </v-card>
+
+      
+
       </div>
 
       <!-- Provides the application the proper gutter -->
@@ -280,7 +284,6 @@ export default {
       </v-container>
     </v-main>
   </v-app>
-
 </template>
 
 <style>

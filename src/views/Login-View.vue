@@ -83,11 +83,15 @@
             </v-col>
           </v-row> -->
             <v-btn
+              :disabled="loading"
               class="btn deep white--text p-4 mx-auto"
               type="submit"
               @click="submit"
             >
-              LOGIN
+              <div v-if="loading" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <span v-else>LOGIN</span>
             </v-btn>
           </form>
         </v-col>
@@ -115,6 +119,7 @@ export default {
   data: () => ({
     email: "",
     show1: false,
+    loading: false,
     password: "",
     errors: null,
   }),
@@ -125,8 +130,10 @@ export default {
         email: this.email,
         password: this.password,
       };
-      await this.loginStore.userLogin(loginDetails);
 
+      this.loading = true;
+      await this.loginStore.userLogin(loginDetails);
+      this.loading = false;
       if (this.loginStore.success) {
         this.$router.push("/services");
         return;

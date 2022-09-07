@@ -18,12 +18,12 @@ library.add(fas);
 
 Vue.use(PiniaVuePlugin);
 const pinia = createPinia();
+Vue.use(pinia);
 /* add font awesome icon component */
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 
-Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
