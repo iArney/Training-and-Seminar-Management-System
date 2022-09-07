@@ -1,5 +1,5 @@
 <template>
-  <v-container v-bind="$attr" class="text-center pt-16" fluid>
+  <v-container v-bind="$attrs" class="text-center pt-16" fluid>
     <p>
       This product is designed and maintained by e-Government Authority
       Tanzania

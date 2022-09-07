@@ -79,7 +79,7 @@ const router = new VueRouter({
  */
 
 router.beforeEach((to, from, next) => {
-  const store = useUserStore();
+  const userStore = useUserStore();
 
   //store the from route in local storage
   for (const route of to.matched) {
@@ -96,7 +96,7 @@ router.beforeEach((to, from, next) => {
      * if it needs auth, check the state of the user if is logged in
      * if not redirect to login page
      */
-    if (!store.isAuthenticated) {
+    if (!userStore.isAuthenticated) {
       return next("/login");
     }
     /* If the user is logged in check if he has permission to access resources

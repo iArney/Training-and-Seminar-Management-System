@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import { getUser } from "@/graphQLqueries/userQueries";
+
 
 //Get auth details from the user's browser
 const authString = localStorage.getItem("authDetails") || "null";
@@ -14,7 +16,20 @@ export const useUserStore = defineStore("user", {
       refreshToken: authObject?.refreshToken ||'',
     };
   },
-  actions: {},
+  actions: {
+    logout (){
+      localStorage.removeItem('authDetails');
+      this.user = null;
+      this.isAuthenticated = false;
+      this.token = '';
+      this.refreshToken = '';
+    },
+    async setUserDetails (){
+      const userDetails = await getUser();
+      // const userRoles = getUserRoles();
+      this.user = userDetails;
+    }
+  },
   // getters: {
   //     doubleCount: state => state.count*2,
   // }

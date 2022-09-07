@@ -1,13 +1,12 @@
 <template>
   <v-app>
-    <router-view />
+    <router-view :key="$route.path" />
   </v-app>
 </template>
 
 <style></style>
 
-<script setup>
-
+<script>
 // import { useInstituionStore } from "@/stores/apiTestStore";
 
 // const store = useInstituionStore();

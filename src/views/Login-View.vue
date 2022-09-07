@@ -97,6 +97,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <Footer class="primary" />
   </div>
 </template>
 
@@ -104,17 +105,20 @@
 import { useLoginStore } from "@/stores/loginStore";
 // import {mapState} from "pinia"
 import { mapStores } from "pinia";
+import Footer from "@/components/global_components/FooterSection.vue";
 import TextInput from "@/components/Microcomponents/TextInput.vue";
 import NavBar from "@/components/global_components/NavBar.vue";
+import { useUserStore } from "@/stores/userStore";
 
 export default {
   name: "LoginPage",
   components: {
+    Footer,
     TextInput,
     NavBar,
   },
   computed: {
-    ...mapStores(useLoginStore),
+    ...mapStores(useLoginStore, useUserStore),
   },
   data: () => ({
     email: "",
@@ -132,13 +136,18 @@ export default {
       };
 
       this.loading = true;
-      await this.loginStore.userLogin(loginDetails);
-      this.loading = false;
-      if (this.loginStore.success) {
-        this.$router.push("/services");
-        return;
+      try {
+        await this.loginStore.userLogin(loginDetails);
+        
+        if (this.loginStore.success) {
+          this.userStore.isAuthenticated = true;
+          this.userStore.user = this.$router.push("/services");
+          return;
+        }
+        this.errors = this.loginStore.errors;
+      } catch (error) {
+        this.loading = false;
       }
-      this.errors = this.loginStore.errors;
     },
   },
 };
