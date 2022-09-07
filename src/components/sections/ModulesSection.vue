@@ -1,41 +1,53 @@
 <template>
-  <div id="modules-section" class="text-center py-16">
+  <div id="modules" class="text-center py-16 position-relative">
+    <v-container class="position-relative mx-auto">
+      <BubbleDecoration
+        class="d-none d-sm-block position-absolute top-0 start-0"
+        :size="48"
+      />
+    </v-container>
     <h1 class="mt-16 fw-bold border-deep pisition-relative">TSMS Modules</h1>
     <v-container fluid>
       <v-row class="text-center" no-gutters>
         <v-col
-          v-for="n in 6"
-          :key="n"
+          v-for="(module, index) in modules.modules"
+          :key="index"
           md="4"
           sm="6"
           cols="12"
           class="my-5 px-3"
         >
-          <ModuleCard />
+          <ModuleCard
+            :description="module.description"
+            :header="module.header"
+            :image="module.img"
+          />
         </v-col>
       </v-row>
     </v-container>
     <div class="ms-5 ps-5">
-      <font-awesome-icon
+      <StarDecoration class="float-start" />
+      <!-- <font-awesome-icon
         class="deep--text float-start position-absolute"
         icon="fa-solid fa-star"
         size="2xl"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
-<script>
-import ModuleCard from "@/components/ModuleCard";
-export default {
-  components: {
-    ModuleCard,
-  },
-};
+<script setup>
+import ModuleCard from "@/components/Microcomponents/ModuleCard";
+import BubbleDecoration from "@/components/decorations/BubbleDecoration";
+import StarDecoration from "@/components/decorations/StarDecoration";
+import { useModulesStore } from "@/stores/modules";
+
+const modules = useModulesStore();
+
 </script>
 
 <style scoped>
-#modules-section {
+#modules {
   background: url(@/assets/images/flag-tanzania.webp);
   background-size: cover;
   background-repeat: no-repeat;

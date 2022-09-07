@@ -1,23 +1,18 @@
 <template>
   <div>
     <template>
-      <v-card class="pt-5 mx-auto rounded-lg" max-width="389">
+      <v-card class="pt-5 mx-auto rounded-lg module-card" max-width="389">
         <v-img
           class="white--text object cover mx-auto mt-10"
           height="129px"
           width="175px"
-          src="@/assets/images/Web-Designing-1.webp"
+          :src="image"
         >
         </v-img>
 
         <v-card-text class="text--primary">
-          <h4 class="fw-bold mb-3 card-header">Top 10 Australian beaches</h4>
-          <p class="fs-6 card-text lh-base">
-            This module allow registration of the all types of Schedules
-            (Training/Seminar/Workshop/Annual Meeting etc), list all schedule
-            including active and inactive schedule. The module also show
-            participation history of a participant.
-          </p>
+          <h4 class="fw-bold mb-3 card-header">{{header}}</h4>
+          <p class="fs-6 card-text lh-base">{{description}}</p>
         </v-card-text>
       </v-card>
     </template>
@@ -25,7 +20,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "ModuleCard",
+  props: {
+    header: String,
+    description: String,
+    image: String,
+  }
+};
 </script>
 
 <style scoped>
@@ -39,5 +41,8 @@ export default {};
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
+}
+.module-card{
+  height: 400px;
 }
 </style>

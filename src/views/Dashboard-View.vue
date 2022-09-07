@@ -218,6 +218,7 @@ export default {
           :single-select="singleSelect"
           item-key="name"
           show-select
+
           class="elevation-1"
         >
           <template v-slot:top>
@@ -244,7 +245,7 @@ export default {
           <v-card-subtitle> enhanced trainings and seminars </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="orange lighten-2" text> Explore </v-btn>
+            <v-btn color="#004b8e" text> Explore </v-btn>
 
             <v-spacer></v-spacer>
 
@@ -278,13 +279,6 @@ export default {
         <!-- </router-view> -->
       </v-container>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-      <span class="footer-txt" style="text-align: center"
-        >&copy;Developed by e-Government Authority</span
-      >
-    </v-footer>
   </v-app>
 
 </template>
@@ -465,10 +459,10 @@ export default {
   margin-left: 32px;
 }
 .txt-header {
-  margin-top: 29px;
-  margin-left: 5px;
+  margin-top: 40px;
+  margin-left: -5px;
   font-weight: 800;
-  font-size: 100%;
+  font-size: 150%;
   color: #004b8e;
 }
 /* user profile */

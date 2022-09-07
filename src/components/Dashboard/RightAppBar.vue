@@ -1,10 +1,11 @@
 <template>
-
+  
 </template>
 
 <script>
 export default {
-   name: 'TopCards'
+    name: 'RightApp'
+
 }
 </script>
 

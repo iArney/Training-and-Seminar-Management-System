@@ -2,10 +2,10 @@
   <v-navigation-drawer app color="#D5E6FB">
     <div class="top-side-bar">
       <img
-        src="@/assets/images/logo.webp"
-        width="95"
-        height="90"
-        style="padding: 9px 12px"
+        src="@/assets/images/official-logo.webp"
+        width="120"
+        height="100"
+        style="padding: 9px 12px;margin-top:10px;"
         alt=""
       />
       <span class="txt-header">TSMS</span>

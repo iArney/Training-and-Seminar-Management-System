@@ -1,5 +1,5 @@
 <template>
-  <v-container id="Banner" fluid>
+  <v-container id="Banner" class="position-relative" fluid>
     <v-row no-gutters>
       <v-col cols="12" md="7" sm="8" xs="12" class="pt-16">
         <v-container fluid>
@@ -18,14 +18,14 @@
                   sessions of systems and services of the Internet Government
                   Authority
                 </p>
-
-                <div id="triangle-decorator" class="mt-12 deep"></div>
+                <TriangleDecoration />
                 <div class="mt-5 ms-16 ps-16">
-                  <button
-                    class="btn btn-lg deep white--text border rounded-pill py-3 px-10"
+                  <a
+                    href="#modules"
+                    class="zoom btn btn-lg deep white--text border rounded-pill py-3 px-10 text-decoration-none"
                   >
                     Read More...
-                  </button>
+                  </a>
                 </div>
               </div>
             </v-col>
@@ -35,33 +35,50 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col class="overflow-hidden d-none d-sm-flex" id="right" cols="6" md="5" sm="4">
+      <v-col
+        class="overflow-hidden d-none d-sm-flex"
+        id="right"
+        cols="6"
+        md="5"
+        sm="4"
+      >
         <v-container>
           <v-row no-gutters>
             <v-col cols="11">
-              <img
-                src="@/assets/images/Hero.webp"
-                class="object-cover image-fluid"
-                alt=""
-                srcset=""
-              />
+              <HeroImage />
             </v-col>
-            <v-col cols="1" class="d-lg-flex d-none align-center ps-10 pt-16 mt-16 pb-5">
-              <font-awesome-icon
-                class="deep--text float-right"
-                icon="fa-solid fa-star fs-"
-                size="2xl"
-              />
+            <v-col
+              cols="1"
+              class="d-lg-flex d-none align-center ps-10 pt-16 mt-16 pb-5"
+            >
+              <!-- Star deocration stays here -->
+              <StarDecoration class="float-right" />
             </v-col>
           </v-row>
         </v-container>
       </v-col>
     </v-row>
+    <BubbleDecoration
+      class="d-none d-sm-block position-absolute top-100 start-50"
+      :size="123"
+    />
   </v-container>
 </template>
 
 <script>
-export default {};
+import BubbleDecoration from "@/components/decorations/BubbleDecoration";
+import HeroImage from "@/components/decorations/HeroImage";
+import TriangleDecoration from "@/components/decorations/TriangleDecoration";
+import StarDecoration from "@/components/decorations/StarDecoration";
+
+export default {
+  components: {
+    BubbleDecoration,
+    HeroImage,
+    TriangleDecoration,
+    StarDecoration,
+  },
+};
 </script>
 
 <style scoped>
@@ -96,12 +113,7 @@ export default {};
 .text {
   font-size: 1.125rem;
 }
-#triangle-decorator {
-  transform: matrix(0.59, -0.81, 0.81, 0.59, 0, 0);
-  width: 50.02px;
-  height: 53.1px;
-  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-}
+
 .xl-text,
 .xl-text {
   font-weight: 900 !important;

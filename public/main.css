@@ -1,18 +1,44 @@
 /*** This file contains CSS ***/
-body {
-  font-family: "Lato", sans-serif;
+#app {
+  font-family: "Lato", sans-serif !important;
+}
+/** Animations ***/
+
+/***
+/** backgrounds *****/
+.bg-tanzania {
+  background: url("../src/assets/images/flag-tanzania.webp"),
+    linear-gradient(
+      100.73deg,
+      rgba(190, 238, 245, 0.5) 1.11%,
+      rgba(209, 209, 209, 0.5) 33.86%,
+      rgba(92, 205, 250, 0.5) 68.61%,
+      #fffeea
+    );
+  background-attachment: fixed;
+}
+
+.no-outline:focus {
+  outline: none !important;
+  box-shadow: none;
 }
 /*** Effects *****/
+/**decorations***/
+/*
+*These are css effects on decorations found in the website
+*/
 /** Hover effect ****/
 /*
 *These are css effects on links and buttons when hovered
 */
-btn {
-  transition: transform 0.1s;
+.zoom,
+a {
+  transition: transform 0.2s ease-in-out;
 }
 
-btn:hover {
+.zoom:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 a:hover {
@@ -21,10 +47,13 @@ a:hover {
 }
 
 /*** Imagery ****/
+/*
+*These styles how an image covers its parent contain 
+**/
 .object-cover {
   object-fit: cover;
 }
 
-.object-contain{
-    object-fit: contain;
+.object-contain {
+  object-fit: contain;
 }

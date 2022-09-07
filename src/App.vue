@@ -1,24 +1,26 @@
 <template>
-
   <v-app>
-    <!-- <NavBar /> -->
-    <router-view/>
+   
+    <router-view />
     <Footer />
   </v-app>
 </template>
 
 <style></style>
 
-<script>
+<script setup>
+import Footer from "@/components/global_components/FooterSection.vue";
 
-// import NavBar from "@/components/NavBar.vue";
-import Footer from "@/components/FooterSection.vue";
+// import { useInstituionStore } from "@/stores/apiTestStore";
 
-export default {
-  components: {
-    // NavBar,
-    Footer
-
-  },
-};
+// const store = useInstituionStore();
+// store.getInstitutions();
+// console.log(store.institutions);
+//  console.log("clicked");
+// export default {
+//   components: {
+//     NavBar,
+//     Footer,
+//   },
+// };
 </script>
