@@ -218,6 +218,7 @@ export default {
           :single-select="singleSelect"
           item-key="name"
           show-select
+
           class="elevation-1"
         >
           <template v-slot:top>
@@ -232,45 +233,47 @@ export default {
       <!--/ selectors check box table -->
 
       <div class="home-container">
-        <router-link to="/about-event">
-          <v-card class="mx-auto" max-width="344">
-            <v-img
-              src="@/assets/images/educating-technologies.webp"
-              height="200px"
-              width="800"
-            ></v-img>
 
-            <v-card-title> @TSMS User Script </v-card-title>
+        <v-card class="mx-auto" max-width="344">
+          <v-img
+            src="@/assets/images/educating-technologies.webp"
+            height="200px"
+            width="800"
+          ></v-img>
 
-            <v-card-subtitle> enhanced trainings and seminars </v-card-subtitle>
+          <v-card-title> @TSMS User Script </v-card-title>
 
-            <v-card-actions>
-              <v-btn color="orange lighten-2" text> Explore </v-btn>
+          <v-card-subtitle> enhanced trainings and seminars </v-card-subtitle>
 
-              <v-spacer></v-spacer>
+          <v-card-actions>
+            <v-btn color="#004b8e" text> Explore </v-btn>
 
-              <v-btn icon @click="show = !show">
-                <v-icon>{{
-                  show ? "mdi-chevron-up" : "mdi-chevron-down"
-                }}</v-icon>
-              </v-btn>
-            </v-card-actions>
+            <v-spacer></v-spacer>
 
-            <v-expand-transition>
-              <div v-show="show">
-                <v-divider></v-divider>
+            <v-btn icon @click="show = !show">
+              <v-icon>{{
+                show ? "mdi-chevron-up" : "mdi-chevron-down"
+              }}</v-icon>
+            </v-btn>
+          </v-card-actions>
 
-                <v-card-text>
-                  Mfumo wa Usimamizi wa Mafunzo na Semina &#40;TSMS&#41;
-                  umetengenezwa kwa ajili ya utunzaji kumbukumbu, kutoa taarifa
-                  za mafunzo na kufuatilia taarifa za wakurufunzi na wakufunzi
-                  zinazohusu mafunzo, semina, warsha,mikutano ya mwaka na vikao
-                  vya mifumo na huduma za Mamlaka ya Serikali Mtandao
-                </v-card-text>
-              </div>
-            </v-expand-transition>
-          </v-card>
-        </router-link>
+          <v-expand-transition>
+            <div v-show="show">
+              <v-divider></v-divider>
+
+              <v-card-text>
+                Mfumo wa Usimamizi wa Mafunzo na Semina &#40;TSMS&#41;
+                umetengenezwa kwa ajili ya utunzaji kumbukumbu, kutoa taarifa za
+                mafunzo na kufuatilia taarifa za wakurufunzi na wakufunzi
+                zinazohusu mafunzo, semina, warsha,mikutano ya mwaka na vikao
+                vya mifumo na huduma za Mamlaka ya Serikali Mtandao
+              </v-card-text>
+            </div>
+          </v-expand-transition>
+        </v-card>
+
+      
+
       </div>
 
       <!-- Provides the application the proper gutter -->
@@ -280,13 +283,6 @@ export default {
         <!-- </router-view> -->
       </v-container>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-      <span class="footer-txt" style="text-align: center"
-        >&copy;Developed by e-Government Authority</span
-      >
-    </v-footer>
   </v-app>
 </template>
 
@@ -466,10 +462,10 @@ export default {
   margin-left: 32px;
 }
 .txt-header {
-  margin-top: 29px;
-  margin-left: 5px;
+  margin-top: 40px;
+  margin-left: -5px;
   font-weight: 800;
-  font-size: 100%;
+  font-size: 150%;
   color: #004b8e;
 }
 /* user profile */

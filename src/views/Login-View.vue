@@ -28,7 +28,7 @@
           <!-- form inputs starts -->
           <div class="text-center py-6">
             <img
-              src="@/assets/images/logo.webp"
+              src="@/assets/images/official-logo.webp"
               class="logo-img d-md-inline-block d-none object-contain"
               width="200"
               height="150"
@@ -153,7 +153,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .logo {
   font-size: 3.3rem !important;
   font-weight: 900 !important;
