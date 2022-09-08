@@ -1,82 +1,67 @@
 <template>
   <v-app>
-    <v-navigation-drawer app :width="110" color="#F4F5FA">
-      <v-img
-        src="@/assets/images/official-logo.webp"
-        style="margin-top: 12px"
-        alt="tsms-logo"
-      >
-      </v-img>
-      <v-icon>
-        <font-awesome-icon icon="fa-solid fa-computer" />
-      </v-icon>
-    </v-navigation-drawer>
-
-    <v-app-bar app> </v-app-bar>
-    <v-main>
+    <NavigationDrawer />
+    <AppBar />
+    <v-main class="light">
       <v-container fluid>
         <v-row class="mt-14 mx-md-6">
-          <v-col cols="12" md="4" lg="3">
-            <v-card :height="700" class="align-center pt-12">
+          <v-col cols="12" md="5" class="pb-12 " lg="4">
+            <v-card height="750" max-width="450" class="align-center py-12 mx-auto">
               <v-img
-                src="@/assets/images/Avatar.png"
-                class="mx-auto"
+                src="@/assets/images/cute-girl.jpg"
+                class="mx-auto object-contain"
                 alt="tsms-logo"
-                :width="200"
-                :height="200"
+                :width="190"
+                :height="190"
               >
               </v-img>
               <div class="mt-5" style="text-align: center">
-                <span><strong>Muammar Gadaffi</strong></span>
+                <span><strong>Lisa Jocktan</strong></span>
               </div>
               <v-container>
                 <v-row no-gutters>
                   <v-col cols="6">
-                    <div class="d-flex">
-                    <v-avatar
-                      tile
-                      color="rgba(38, 132, 255, 0.12)"
-                      class="rounded ms-4"
-                    >
-                      <v-icon color="blue"> mdi-check</v-icon>
-                    </v-avatar>
-                    <div>
-                      <span class="ms-13">10</span> <br>
-                    <span class="ms-1">Training Attended</span>
+                    <div class="d-flex flex-row">
+                      <v-avatar
+                        tile
+                        color="rgba(38, 132, 255, 0.12)"
+                        class="rounded"
+                        size="47"
+                      >
+                        <v-icon color="blue"> mdi-check </v-icon>
+                      </v-avatar>
+                      <span class="ms-2 h5">10  Training attended</span>
                     </div>
-                    </div>      
                   </v-col>
                   <v-col cols="6">
-                    <div class="d-flex">
-                    <v-avatar
-                      tile
-                      color="rgba(38, 132, 255, 0.12)"
-                      class="rounded ms-4"
-                    >
-                      <v-icon color="blue"> mdi-star</v-icon>
-                    </v-avatar>
-                    <div>
-                      <span class="ms-13">10</span> <br>
-                    <span class="ms-1">Training Attended</span>
+                    <div class="d-flex flex-row">
+                      <v-avatar
+                        tile
+                        color="rgba(38, 132, 255, 0.12)"
+                        class="rounded"
+                        size="47"
+                      >
+                        <v-icon color="blue"> mdi-star</v-icon>
+                      </v-avatar>
+                      <span class="ms-2 h5">0 Training Requested</span>
                     </div>
-                    </div>      
                   </v-col>
                 </v-row>
               </v-container>
-              <div class="details px-6" style="list-style: none">
-                <h3>Details</h3>
+              <div class="details px-6 mt-2" style="list-style: none">
+                <h5>Details</h5>
                 <hr />
-                <li><strong>Username:</strong></li>
-                <li><strong>E-mail:</strong></li>
-                <li><strong>Role:</strong></li>
-                <li><strong>ID:</strong></li>
-                <li><strong>Contact:</strong></li>
-                <li><strong>Location:</strong></li>
-                <li><strong>Country:</strong></li>
+                <li class="mb-3"><strong>Username: </strong>Lisa Jocktan</li>
+                <li class="mb-3"><strong>E-mail: </strong>lisajocktan@gmail.com</li>
+                <li class="mb-3"><strong>Role: </strong>Trainer</li>
+                <li class="mb-3"><strong>ID: </strong>2022-04-00098</li>
+                <li class="mb-3"><strong>Contact: </strong> 0752186174</li>
+                <li class="mb-3"><strong>Location: </strong>Dodoma</li>
+                <li class="mb-3"><strong>Country: </strong>Tanzanina</li>
               </div>
               <div style="text-align: center">
                 <v-btn
-                  class="btn deep white--text p-4"
+                  class="btn deep white--text mt-3"
                   type="submit"
                   @click="submit"
                 >
@@ -86,17 +71,10 @@
             </v-card>
           </v-col>
 
-          <v-col cols="12" md="8" lg="9">
+          <v-col cols="12" md="7" lg="8">
             <v-card class="mb-12">
               <h4 class="pt-10 px-10">Training List Attended</h4>
-              <template>
-                <v-data-table
-                  :headers="headers"
-                  :items="desserts"
-                  :items-per-page="5"
-                  class="elevation-1"
-                ></v-data-table>
-              </template>
+              <EventsTable />
             </v-card>
             <v-card class="mb-12 ps-8">
               <h4 class="pt-10 px-2">User Activity Timeline</h4>
@@ -133,7 +111,7 @@
                   </v-badge>
                   <span class="d-inline-block" style="max-width: 50%">
                     12 Invoices have been paid <br />
-                   <span style="color: rgba(58, 53, 65, 0.68)">
+                    <span style="color: rgba(58, 53, 65, 0.68)">
                       Invoices have been paid to the company
                     </span>
                   </span>
@@ -176,14 +154,19 @@
         </v-row>
       </v-container>
     </v-main>
+    <FooterSection class="light" />
   </v-app>
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
+import AppBar from "@/components/global_components/AppBar.vue";
+import FooterSection from "@/components/global_components/FooterSection.vue";
+import EventsTable from "@/components/Microcomponents/EventsTable.vue";
+
 export default {
   name: "staffManagement-View",
-  components: { FontAwesomeIcon },
+  components: { NavigationDrawer, AppBar, FooterSection, EventsTable },
   data: () => ({
     headers: [
       {
@@ -284,10 +267,4 @@ export default {
 };
 </script>
 
-<style>
-main {
-  background: #f0f8ff;
-  background-attachment: fixed;
-  font-family: "Roboto";
-}
-</style>
+<style></style>

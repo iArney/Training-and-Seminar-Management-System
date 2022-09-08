@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-center user-wrapper">
     <v-menu
-      class="d-inline-block mx-3 zoom"
+      class="d-inline-block ms-md-3 zoom"
       transition="slide-y-transition"
       offset-y
       elevation="0"
