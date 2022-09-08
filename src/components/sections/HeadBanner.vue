@@ -1,7 +1,7 @@
 <template>
   <v-container id="Banner" class="position-relative" fluid>
     <v-row no-gutters>
-      <v-col cols="12" md="7" sm="8" xs="12" class="pt-16">
+      <v-col cols="12" md="6" sm="8" xs="12" class="pt-16">
         <v-container fluid>
           <v-row no-gutters>
             <v-col lg="11" cols="12">
@@ -39,7 +39,7 @@
         class="overflow-hidden d-none d-sm-flex"
         id="right"
         cols="6"
-        md="5"
+        md="6"
         sm="4"
       >
         <v-container>

@@ -28,7 +28,7 @@
         >
           <input
             type="text"
-            class="form-control border-0"
+            class="form-control border-0 no-outline"
             id="inputMobileSearch"
             name="query"
             placeholder="Search ..."
@@ -53,7 +53,7 @@
       >
         <font-awesome-icon icon="fa-solid fa-bell" />
       </router-link>
-      <UserDetails v-if="!isAuthenticated" color="light" />
+      <UserDetails color="light" />
 
       <!-- </notifcation ends> -->
       <!-- <div class="user-profile">
@@ -96,7 +96,7 @@ export default {
 .search-bar {
   border: 1.3px solid rgba(196, 202, 205, 0.4);
   border-radius: 57px;
-  /* width: 430px !important; */
+  width: 430px !important;
 }
 .username {
   font-style: normal !important;

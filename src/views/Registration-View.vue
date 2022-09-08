@@ -4,7 +4,9 @@
     <v-container class="bg-tanzania" fluid>
       <v-row class="mx-auto my-16 form-container" no-gutters>
         <v-col cols="5" class="d-sm-flex d-none align-center">
-          <div class="bg-register card-content pt-16 pb-16 ps-10 text-white">
+          <div
+            class="bg-register card-content pt-16 pb-16 ps-10 text-white position-relative"
+          >
             <div class="pb-10 overflow-auto">
               <h5>Tafadhali zingatia yafuatayo wakati unajisajili.</h5>
               <ol>
@@ -27,6 +29,14 @@
                 </li>
                 <li>Kwa msaada piga +255 764 292 299 au +255 763 292 299</li>
               </ol>
+              <div
+                class="text-center position-absolute bottom-0 start-50 translate-middle-x pb-5"
+              >
+                <p class="caption">Have an account?</p>
+                <router-link class="text-decoration-none" to="/login">
+                  <v-btn outlined color="warning" class="zoom">Login</v-btn>
+                </router-link>
+              </div>
             </div>
           </div>
         </v-col>
