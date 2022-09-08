@@ -9,8 +9,23 @@
             </span>
           </v-banner>
         </div> -->
-      <div>
-        <div class="input-group search-bar border rounded-pill ps-6 pe-3">
+      <div class="d-flex">
+        <div class="">
+          <button
+            @click="drawerOpen = !drawerOpen"
+            class="bg-inherit btn border-0"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#side-nav"
+            aria-controls="side-nav"
+          >
+            <v-icon>fas fa-list</v-icon>
+          </button>
+        </div>
+
+        <div
+          v-if="$vuetify.breakpoint.mdAndUp"
+          class="input-group search-bar border rounded-pill ps-6 pe-3 w-75"
+        >
           <input
             type="text"
             class="form-control border-0"
@@ -22,38 +37,26 @@
             <i class="fa fa-fw fa-search"></i>
           </button>
         </div>
+        <button
+          v-if="$vuetify.breakpoint.smAndDown"
+          type="submit"
+          class="input-group-text white"
+        >
+          <i class="fa fa-fw fa-search"></i>
+        </button>
       </div>
       <v-spacer></v-spacer>
-      <div>
-        <div class="d-inline-block mx-3" @click="pop">
-          <v-badge bordered overlap dot color="red">
-            <font-awesome-icon icon="fa-bell" class="notification-icon" />
-          </v-badge>
-        </div>
-        <div class="d-inline-block mx-3" @click="pop">
-          <v-container class="my-5 light pe-4">
-            <v-row no-gutters>
-              <v-col cols="4">
-                <img
-                  src="@/assets/images/lisa.webp"
-                  alt="userprofile"
-                  class="object-cover rounded-circle"
-                  width="45"
-                  height="45"
-                />
-              </v-col>
-              <v-col cols="8">
-                <div>
-                  <span class="d-block username">Lisa Jocktan</span>
-                  <span class="d-block email">lisajocktan@gmail.com</span>
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
 
-        <!-- </notifcation ends> -->
-        <!-- <div class="user-profile">
+      <router-link
+        to="/"
+        class="text-decoration-none dark--text fw-bold mx-3 d-none d-sm-inline-block"
+      >
+        <font-awesome-icon icon="fa-solid fa-bell" />
+      </router-link>
+      <UserDetails v-if="!isAuthenticated" color="light" />
+
+      <!-- </notifcation ends> -->
+      <!-- <div class="user-profile">
           <v-avatar size="45">
             <img src="@/assets/images/logo.webp" alt="userprofile" />
           </v-avatar>
@@ -66,16 +69,26 @@
             offset-y="-10"
           ></v-badge>
         </div> -->
-      </div>
+
       <!-- new notification {an event handler is required to switch notification status to read} -->
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import { mapWritableState } from "pinia";
+import { useNavigationStore } from "@/stores/NavigationStore";
+import UserDetails from "@/components/Microcomponents/userDetails.vue";
+
 export default {
   name: "AppBar",
-  components: {},
+  components: {
+    UserDetails,
+  },
+  computed: {
+    ...mapWritableState(useNavigationStore, ["drawerOpen"]),
+  },
+  emits: ["open-drawer"],
 };
 </script>
 
@@ -83,7 +96,7 @@ export default {
 .search-bar {
   border: 1.3px solid rgba(196, 202, 205, 0.4);
   border-radius: 57px;
-  width: 430px;
+  /* width: 430px !important; */
 }
 .username {
   font-style: normal !important;

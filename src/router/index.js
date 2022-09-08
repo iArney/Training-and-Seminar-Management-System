@@ -25,13 +25,13 @@ const routes = [
       import(/* webpackChunkName: "about" */ "@/views/AboutEvent-View.vue"),
   },
   {
-    path: "/eventcollection",
+    path: "/events-collection",
     name: "eventcollection",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/EventCollection-View.vue"),
   },
   {
-    path: "/applicationform",
+    path: "/application-form",
     name: "applicationform",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/ApplicationForm-View.vue"),

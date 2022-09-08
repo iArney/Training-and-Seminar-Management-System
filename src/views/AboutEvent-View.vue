@@ -2,12 +2,14 @@
   <div>
     <AppBar />
     <NavigationDrawer />
-    <v-container class="content-wrapper py-16 px-md-16 mt-10 " fluid>
+    <v-container class="content-wrapper py-16 px-md-16 mt-10" fluid>
       <div class="content pt-8 pb-16 mx-auto">
-        <v-btn text>
-          <v-icon dense left>mdi-arrow-left</v-icon>
-          <span class="text-capitalize">Event</span>
-        </v-btn>
+        <router-link to="/events-collection" class="text-decoration-none">
+          <v-btn text>
+            <v-icon dense left>mdi-arrow-left</v-icon>
+            <span class="text-capitalize">Event</span>
+          </v-btn>
+        </router-link>
 
         <v-row no-gutters class="cardtop">
           <v-col cols="6" class="lefttop">
@@ -27,7 +29,9 @@
                 obcaecati asperiores, assumenda aliquid, fuga iusto mollitia
                 unde praesentium sint ab. Ab.
               </p>
-              <v-btn color="deep white--text" class="py-6 mt-5" elevation="2"> ATTEND</v-btn>
+              <v-btn color="deep white--text" class="py-6 mt-5" elevation="2">
+                ATTEND</v-btn
+              >
             </div>
           </v-col>
         </v-row>
@@ -55,17 +59,17 @@
         </v-row>
       </div>
     </v-container>
-    <Footer class="superLight"/>
+    <Footer class="superLight" />
   </div>
 </template>
 
 <script>
-import AppBar from '@/components/global_components/AppBar.vue';
-import NavigationDrawer from '@/components/global_components/NavigationDrawer.vue';
-import Footer from '@/components/global_components/FooterSection.vue';
+import AppBar from "@/components/global_components/AppBar.vue";
+import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
+import Footer from "@/components/global_components/FooterSection.vue";
 
 export default {
-  components: { AppBar, NavigationDrawer, Footer},
+  components: { AppBar, NavigationDrawer, Footer },
   name: "AboutEvent",
 };
 </script>
