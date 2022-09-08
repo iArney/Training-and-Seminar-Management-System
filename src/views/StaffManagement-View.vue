@@ -32,25 +32,34 @@
               <v-container>
                 <v-row no-gutters>
                   <v-col cols="6">
+                    <div class="d-flex">
                     <v-avatar
                       tile
                       color="rgba(38, 132, 255, 0.12)"
-                      class="rounded"
+                      class="rounded ms-4"
                     >
-                      <v-icon color="blue"> mdi-check </v-icon>
+                      <v-icon color="blue"> mdi-check</v-icon>
                     </v-avatar>
-                    <span class="ms-2">Hello</span>
+                    <div>
+                      <span class="ms-13">10</span> <br>
+                    <span class="ms-1">Training Attended</span>
+                    </div>
+                    </div>      
                   </v-col>
                   <v-col cols="6">
+                    <div class="d-flex">
                     <v-avatar
                       tile
                       color="rgba(38, 132, 255, 0.12)"
-                      class="rounded"
+                      class="rounded ms-4"
                     >
                       <v-icon color="blue"> mdi-star</v-icon>
                     </v-avatar>
-                    <span class="ms-2">10</span> <br />
-                    <span class="ms-12">Training Attended</span>
+                    <div>
+                      <span class="ms-13">10</span> <br>
+                    <span class="ms-1">Training Attended</span>
+                    </div>
+                    </div>      
                   </v-col>
                 </v-row>
               </v-container>
