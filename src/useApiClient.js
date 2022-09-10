@@ -5,13 +5,14 @@
 //  * @returns {Promise} a promise response of the request
 //  *
 //  */
-// export const useAPIClient = async (query) => {
-const apiClient = async (query) => {
+
+const apiClient = async (query, token) => {
   const response = await fetch("http://172.17.17.136:8000/graphql", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      authorization: `jwt ${token || ''}`,
     },
     body: JSON.stringify({
       query,

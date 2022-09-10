@@ -5,12 +5,14 @@ export const useNavigationStore = defineStore("navigation", {
   state: () => {
     return {
       drawerOpen: false,
+      activeLink: '',
     };
   },
   actions: {
-    // toggleDrawer(){
-    //     return 
-    // }
+    setActiveLink(active){
+      console.log(active);
+      this.activeLink = active
+    }
   },
   // getters: {
   //     doubleCount: state => state.count*2,

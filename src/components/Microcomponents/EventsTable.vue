@@ -1,127 +1,90 @@
 <template>
   <div>
-    <template>
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        item-key="name"
-        show-select
-        class="elevation-1"
-      >
-        <template v-slot:top>
-          <v-switch
-            label="Single select"
-            class="pa-3"
-          ></v-switch>
+    <!-- <div class="warningLight d-flex justify-end py-5 px-3">
+      <input
+        v-model="search"
+        class="no-outline form-control search-form"
+        placeholder="Search User"
+      />
+      <v-btn color="deep" class="white--text ms-4 no-outline">SEARCH</v-btn>
+    </div> -->
+    <div v-if="data.length !== 0">
+      <v-simple-table class="pb-5 mt-3">
+        <template v-slot:default>
+          <thead class="primary">
+            <tr>
+              <th class="text-left deep--text">Date</th>
+              <th class="text-left deep--text">Topic</th>
+              <th class="text-left deep--text">Delivery</th>
+              <th class="text-left deep--text">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              @click="$router.push('/staff-management')"
+              v-for="(item, index) in data"
+              :key="index"
+              class="py-3"
+            >
+              <td>{{ new Date(item.startDate) }}</td>
+              <td>{{ item.topic }}</td>
+              <td>
+                {{ item.modeOfDelivery === "A_0" ? "Physical" : "Online" }}
+              </td>
+              <td v-if="item.status === 'A_0'">Upcoming</td>
+              <td v-if="item.status === 'A_1'">OnGoing</td>
+              <td v-if="item.status === 'A_2'">Cancelled</td>
+              <td v-if="item.status === 'A_3'">Postponded</td>
+            </tr>
+          </tbody>
         </template>
-      </v-data-table>
-    </template>
+      </v-simple-table>
+      <div class="white pb-5 text-center">
+        <v-btn
+          @click="queryPage(n)"
+          :key="n"
+          v-for="n in 2"
+          x-small
+          :class="[
+            activePage === n && 'active',
+            'mx-1 deep white--text no outline',
+          ]"
+          >{{ n }}</v-btn
+        >
+      </div>
+    </div>
+    <div v-else class="white ">
+      <h4 class="py-16 text-center">No data is available</h4>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "EventsTable",
+  props: {
+    data: Array,
+  },
   data: () => ({
     show: false,
-    headers: [
-      {
-        text: "Date",
-        align: "start",
-        sortable: true,
-        value: "date",
-      },
-      { text: "Session", value: "session" },
-      { text: "Trainer", value: "trainer" },
-      { text: "Status", value: "status" },
-    ],
-    desserts: [
-      {
-        date: "22 Feb 2022",
-        session: "IT training",
-        trainer: "Brian Nkwera",
-        status: "Completed",
-      },
-      {
-        date: "22 May 2022",
-        session: "Mafunzo ya mapokezi",
-        trainer: "Arnold Nkwera",
-        status: "Completed",
-      },
-      {
-        date: "22 July 2022",
-        session: "E-mrejesho",
-        trainer: "Lisa Jocktan",
-        status: "Postponded",
-      },
-      {
-        date: "22 September 2022",
-        session: "GMS short course",
-        trainer: "Maseil Musa",
-        status: "Upcoming",
-      },
-      {
-        date: "25 September 2022",
-        session: "Mafunzo ya ukarani",
-        trainer: "Robinson Emmanuel",
-        status: "Upcoming",
-      },
-      {
-        date: "27 September 2022",
-        session: "Data entry seminar",
-        trainer: "Maduka PCM",
-        status: "Upcoming",
-      },
-      {
-        date: "02 October 2022",
-        session: "Data entry seminar",
-        trainer: "Jackson Bakari",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-      {
-        date: "22 September 2022",
-        session: "Data entry seminar",
-        trainer: "Dr. Jaha Mvula",
-        status: "Upcoming",
-      },
-    ],
+    activePage: 1,
+    search: "",
   }),
   methods: {
-    pop() {
-      console.log("clicked");
+    queryPage(n) {
+      this.activePage = n;
+      this.$emit("queryPage", n);
     },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.search-form {
+  max-width: 350px !important;
+}
+.active {
+  background: #f5f9ff !important;
+  color: #004b8e !important;
+}
+</style>

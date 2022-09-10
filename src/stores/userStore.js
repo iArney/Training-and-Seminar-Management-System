@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
-import { getUser } from "@/graphQLqueries/userQueries";
+import { getUser, getUserPermissions } from "@/graphQLqueries/userQueries";
 
 
 //Get auth details from the user's browser
 const authString = localStorage.getItem("authDetails") || "null";
+const permissionString = localStorage.getItem("permissions") ||'null';
 //parse the string to JSON
 const authObject = JSON.parse(authString);
+const permissionsObject = JSON.parse(permissionString); 
 
 export const useUserStore = defineStore("user", {
   state: () => {
@@ -14,6 +16,7 @@ export const useUserStore = defineStore("user", {
       isAuthenticated: authObject?.success || false,
       token: authObject?.token || '',
       refreshToken: authObject?.refreshToken ||'',
+      permissions: permissionsObject || [],
     };
   },
   actions: {
@@ -26,8 +29,14 @@ export const useUserStore = defineStore("user", {
     },
     async setUserDetails (){
       const userDetails = await getUser();
-      // const userRoles = getUserRoles();
       this.user = userDetails;
+    },
+    async setPermissions(){
+      const userDetails = await getUserPermissions(this.token);
+
+      this.permissions = userDetails.map(item => item.permissionCode);
+
+      localStorage.setItem('permissions',JSON.stringify(this.permissions));
     }
   },
   // getters: {

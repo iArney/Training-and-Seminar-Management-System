@@ -48,6 +48,7 @@ export const useServicesStore = defineStore("services", {
           img: require("@/assets/images/userCheck.webp"),
           background: "warning",
           link: "/client-management",
+          adminOnly: true,
         },
       ],
     };

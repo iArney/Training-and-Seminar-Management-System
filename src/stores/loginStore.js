@@ -23,6 +23,7 @@ export const useLoginStore = defineStore("login", {
 
       if(result.success){
         //store user details to local storage
+        
         localStorage.setItem('authDetails', JSON.stringify(result));
       }
     },

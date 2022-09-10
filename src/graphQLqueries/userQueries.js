@@ -16,3 +16,17 @@ export const getUser = async () => {
 
   return data.data.me;
 };
+
+export const getUserPermissions = async (token) => {
+  const query = `query{
+    allMypermissions{
+      permissionCode
+    }
+  }
+    `;
+  const response = await apiClient(query, token);
+
+  const data = await response.json();
+
+  return data.data.allMypermissions;
+};

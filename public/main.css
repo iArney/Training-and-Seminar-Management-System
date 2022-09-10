@@ -18,6 +18,10 @@
   background-attachment: fixed;
 }
 
+.bg-warning-gradient {
+  background: linear-gradient(180deg, #fffba1 0%, #ffffff 100%);
+}
+
 .no-outline:focus {
   outline: none !important;
   box-shadow: none;
@@ -31,6 +35,9 @@
 /*
 *These are css effects on links and buttons when hovered
 */
+.z-3000{
+  z-index: 3000 !important;
+}
 .zoom,
 a {
   transition: transform 0.2s ease-in-out;

@@ -13,11 +13,12 @@
             sm="6"
             cols="12"
             class="my-5"
-            v-for="(service, index) in store.services"
+            v-for="(service, index) in serviceStore.services"
             :key="index"
           >
             <div>
               <ServiceCard
+                v-if="!service.adminOnly || userStore.permissions.includes('edit_data')"
                 :image="service.img"
                 :header="service.header"
                 :background="service.background"
@@ -37,8 +38,10 @@ import NavBar from "@/components/global_components/NavBar.vue";
 import ServiceCard from "@/components/Microcomponents/ServiceCard.vue";
 import CirclesDecoration from "@/components/decorations/CirclesDecoration";
 import { useServicesStore } from "@/stores/servicesStore";
+import {useUserStore} from "@/stores/userStore";
 
-const store = useServicesStore();
+const serviceStore = useServicesStore();
+const userStore = useUserStore();
 </script>
 
 <style scoped>

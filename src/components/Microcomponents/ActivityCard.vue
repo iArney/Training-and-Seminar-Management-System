@@ -1,5 +1,6 @@
 <template>
   <div
+  @click="$emit('changeTab', activityName)"
     class="pt-6 shadow white text-center mx-auto"
     style="width: 240.75px; height: 159.07px"
   >
@@ -29,4 +30,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+  div:hover{
+    cursor: pointer;
+  }
+</style>

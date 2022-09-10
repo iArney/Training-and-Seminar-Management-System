@@ -1,14 +1,6 @@
 <template>
   <div>
-    <v-app-bar class="px-lg-16" color="white" elevation="0" height="90" app>
-      <!-- <div class="">
-          <v-banner color="#D5E6FB">
-            <span class="txt-header user">
-              iArnold Raphael <br />
-              <span class="user-address">iarnoldraphael@gmail.com</span>
-            </span>
-          </v-banner>
-        </div> -->
+    <v-app-bar class="px-lg-16 z-3000" color="white" elevation="0" height="90" app>
       <div class="d-flex">
         <div class="">
           <button
@@ -28,7 +20,7 @@
         >
           <input
             type="text"
-            class="form-control border-0 no-outline"
+            class="form-control border-0 no-outline white"
             id="inputMobileSearch"
             name="query"
             placeholder="Search ..."

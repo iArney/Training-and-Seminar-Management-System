@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-center user-wrapper">
+  <div class="d-flex align-center user-wrapper zoom">
     <v-menu
       class="d-inline-block ms-md-3 zoom"
       transition="slide-y-transition"
@@ -30,8 +30,8 @@
             </v-col>
             <v-col cols="8">
               <div class="px-1">
-                <span class="d-block username">Lisa Jocktan</span>
-                <span class="d-block email">lisajocktan487@gmail.com</span>
+                <span class="d-block username">{{userStore.user.username}}</span>
+                <span class="d-block email">{{userStore.user.email}}</span>
               </div>
             </v-col>
             <v-col cols="1" class="ps-2">

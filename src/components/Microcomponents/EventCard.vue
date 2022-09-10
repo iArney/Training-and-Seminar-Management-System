@@ -14,7 +14,7 @@
     </div>
 
     <v-card-subtitle class="green--text font-weight-bold">
-      {{ mode }}
+      {{ mode===0 ? "Free" : `Tsh ${mode}` }}
     </v-card-subtitle>
     <v-card-actions>
       <v-card-title class="fs-6">
@@ -37,7 +37,7 @@ export default {
   name: "EventCard",
   props: {
     image: String,
-    mode: String,
+    mode: Number,
     name: String,
   },
 };

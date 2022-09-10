@@ -84,7 +84,7 @@
           </v-row> -->
             <v-btn
               :disabled="loading"
-              class="btn deep white--text p-4 mx-auto"
+              class="btn deep white--text p-4 mx-auto no-outline"
               type="submit"
               @click="submit"
             >
@@ -138,13 +138,19 @@ export default {
       this.loading = true;
       try {
         await this.loginStore.userLogin(loginDetails);
-        
+
         if (this.loginStore.success) {
           this.userStore.isAuthenticated = true;
-          this.userStore.user = this.$router.push("/services");
+          this.userStore.user = this.loginStore.user;
+          this.userStore.token = this.loginStore.token;
+          this.userStore.refreshToken = this.loginStore.refreshToken;
+          await this.userStore.setPermissions();
+
+          this.$router.push("/services");
           return;
         }
         this.errors = this.loginStore.errors;
+        this.loading = false;
       } catch (error) {
         this.loading = false;
       }

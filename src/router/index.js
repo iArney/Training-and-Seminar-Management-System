@@ -1,11 +1,9 @@
 import { useUserStore } from "@/stores/userStore";
+import hasRoutePermission from "@/helpers/authorizeHelper";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "@/views/Home-View.vue";
 //replace isLogged in with an actual state;
-
-// const isLoggedIn = true;
-const hasPermission = true;
 
 Vue.use(VueRouter);
 
@@ -18,57 +16,99 @@ const routes = [
   {
     path: "/about-event",
     name: "about-event",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    meta:{
+      //if the route requires auth
+      requiresAuth: true, 
+      //set user permissions
+      // permissions: ['edit_data'],
+    },
+    /* route level code-splitting
+    * this generates a separate chunk (about.[hash].js) for this route
+     which is lazy-loaded when the route is visited.
+     */
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/AboutEvent-View.vue"),
   },
   {
+    path: "/create",
+    name: "create",
+    meta: {
+      requiresAuth: true,
+      permissions: ['edit_data'],
+    },
+    
+    component: () =>
+      import( "@/views/Create-Training.vue"),
+  },
+  {
     path: "/events-collection",
     name: "eventcollection",
+    meta: {
+      requiresAuth: true,
+    },
+    requiresAuth: true,
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/EventCollection-View.vue"),
+      import( "@/views/EventCollection-View.vue"),
   },
   {
     path: "/application-form",
     name: "applicationform",
+    meta: {
+      requiresAuth: true,
+      permissions: ['edit_data'],
+    },
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/ApplicationForm-View.vue"),
+      import( "@/views/ApplicationForm-View.vue"),
   },
   {
     path: "/login",
     name: "login",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/Login-View.vue"),
+      import("@/views/Login-View.vue"),
   },
   {
     path: "/registration",
     name: "registration",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/Registration-View.vue"),
+      import("@/views/Registration-View.vue"),
   },
   {
     path: "/dashboard",
     name: "dashboard",
+    meta: {
+      requiresAuth: true,
+      permissions: [],
+    },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Dashboard-View.vue"),
+      import("../views/Dashboard-View.vue"),
   },
   {
     path: "/services",
     name: "services",
     meta: {
       requiresAuth: true,
+      permissions: [],
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Services-View.vue"),
+      import("../views/Services-View.vue"),
   },
   {
-    path: "/staffManagement",
+    path: "/staff",
+    name: "staff",
+    meta: {
+      requiresAuth: true,
+      permissions: ['edit_data'],
+    },
+    component: () =>
+      import("../views/Staff-View.vue"),
+  },
+  {
+    path: "/staff-management",
     name: "staffManagement",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    meta: {
+      requiresAuth: true,
+      permissions: ['edit_data'],
+    },
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/StaffManagement-View.vue"),
   },
@@ -111,7 +151,10 @@ router.beforeEach((to, from, next) => {
     /* If the user is logged in check if he has permission to access resources
      * if not remain to the current page
      */
-    if (hasPermission) {
+    if(route.meta.permissions.length === 0){
+      return next();
+    }
+    if (hasRoutePermission(route.meta.permissions, userStore.permissions)) {
       return next();
     }
 
