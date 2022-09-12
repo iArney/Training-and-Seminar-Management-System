@@ -109,8 +109,8 @@ const routes = [
       ),
   },
   {
-    path: "/training-nav",
-    name: "staff",
+    path: "/training",
+    name: "training",
     meta: {
       requiresAuth: true,
       permissions: [],
