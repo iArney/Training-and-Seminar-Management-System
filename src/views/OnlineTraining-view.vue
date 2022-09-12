@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import TraingNav from '@/Training'
 export default {
 
 }
