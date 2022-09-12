@@ -15,45 +15,37 @@
         <img src="@/assets/images/lisa.webp" alt="userprofile" />
       </v-avatar>
     </v-app-bar>
-    <v-container id="Banner" class="position-relative pt-10" fluid>
+    <v-container class="bg-gradient position-relative pt-10" fluid>
       <v-row no-gutters>
-        <v-col cols="12" md="6" sm="8" xs="12" class="pt-16">
-          <v-container fluid>
-            <v-row no-gutters>
-              <v-col lg="11" cols="12" class="mt-10 ms-5">
-                <div>
-                  <h2 class="lh-base">Training Meeting for Everyone</h2>
-                  <p class="lh-lg text">
-                    The Training and Seminar Management System (TSMS) has been
-                    developed to maintain records, provide training information
-                    and monitor the information of trainers and instructors
-                  </p>
-                  <div class="d-flex mt-8">
-                    <v-btn
-                      elevation="2"
-                      large
-                      color="deep"
-                      class="zoom white--text text-capitalize py-6 text-right "
-                      ><v-icon color="white"> mdi-play-network-outline </v-icon>
-                      New Meeting
-                    </v-btn>
-                    <div class="d-inline-block ms-5">
-                      <!-- <TextInput /> -->
-                       <v-text-field
-                      label="Enter a Code or Link"
-                      prepend-inner-icon="mdi-keyboard"
-                      outlined
-                      color="deep"
-                      
-                    ></v-text-field>
-                    </div>
-                   
-                  </div>
-                </div>
-                <p>Learn more about <span class="">TSMS</span></p>
-              </v-col>
-            </v-row>
-          </v-container>
+        <v-col cols="12" md="6" sm="8" xs="12" class="pt-16 ps-lg-16">
+          <div class="ps-lg-10">
+            <h2 class="lh-base">Training Meeting for Everyone</h2>
+            <p class="lh-lg text">
+              The Training and Seminar Management System (TSMS) has been
+              developed to maintain records, provide training information and
+              monitor the information of trainers and instructors
+            </p>
+            <div class="d-flex mt-8">
+              <v-btn
+                elevation="2"
+                large
+                color="deep"
+                class="zoom white--text text-capitalize py-6 text-right"
+                ><v-icon color="white"> mdi-play-network-outline </v-icon>
+                New Meeting
+              </v-btn>
+              <div class="d-inline-block ms-5">
+                <!-- <TextInput /> -->
+                <v-text-field
+                  label="Enter a Code or Link"
+                  prepend-inner-icon="mdi-keyboard"
+                  outlined
+                  color="deep"
+                ></v-text-field>
+              </div>
+            </div>
+            <p>Learn more about <span class="">TSMS</span></p>
+          </div>
         </v-col>
         <v-col
           class="overflow-hidden d-none d-sm-flex"
@@ -65,28 +57,29 @@
           <img src="@/assets/images/Group.png" class="hero-image" />
         </v-col>
       </v-row>
+      <Footer />
     </v-container>
   </div>
 </template>
 
 <script>
-// import TextInput from "@/components/Microcomponents/TextInput.vue";
+import Footer from "@/components/global_components/FooterSection.vue";
 
 export default {
   name: "TrainingPage",
-  // components: {TextInput},
+  components: { Footer },
 };
 </script>
 
 <style scoped>
-#Banner {
+.bg-gradient {
   background: linear-gradient(
     100.73deg,
     #d5e6fb 1.11%,
     #fffeea 33.86%,
     #fffba1 68.61%,
     #d5e6fb 97.83%
-  );
+  ) !important;
   font-family: "Lato", sans-serif;
 }
 .hero-image {
