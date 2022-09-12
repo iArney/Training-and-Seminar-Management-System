@@ -129,11 +129,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.video-container{
-  max-width: 1300px;
-}
-.large-image {
-  max-height: 750px;
-}
+
+<style>
+
 </style>
