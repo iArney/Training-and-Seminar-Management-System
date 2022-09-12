@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="px-lg-16 light shadow">
-      <v-app-bar color="white" elevation="0" class="py-1" height="100px">
+    <div class="light shadow">
+      <v-app-bar elevation="0" class="py-1" height="100px">
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
         <v-img
           src="@/assets/images/logo.webp"
