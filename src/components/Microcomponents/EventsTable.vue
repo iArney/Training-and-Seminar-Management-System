@@ -44,10 +44,10 @@
           @click="queryPage(n)"
           :key="n"
           v-for="n in 2"
-          x-small
+          small
           :class="[
             activePage === n && 'active',
-            'mx-1 deep white--text no outline',
+            'mx-1 white dark--text no outline',
           ]"
           >{{ n }}</v-btn
         >
@@ -84,7 +84,7 @@ export default {
   max-width: 350px !important;
 }
 .active {
-  background: #f5f9ff !important;
-  color: #004b8e !important;
+  background: #004b8e !important;
+  color:  #f5f9ff!important;
 }
 </style>

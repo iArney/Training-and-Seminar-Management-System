@@ -7,7 +7,7 @@
         <router-link to="/events-collection" class="text-decoration-none">
           <v-btn text>
             <v-icon dense left>mdi-arrow-left</v-icon>
-            <span class="text-capitalize">Event</span>
+            <span class="text-capitalize">More Events</span>
           </v-btn>
         </router-link>
 
@@ -15,23 +15,19 @@
           <v-col cols="6" class="lefttop">
             <div class="lefttop h-100 w-100 d-flex align-end">
               <v-toolbar class="tool-top" flat>
-                <span class="white--text font-weight-medium">IT Training</span>
+                <span class="white--text font-weight-medium">{{item.topic}}</span>
               </v-toolbar>
             </div>
-            <!-- <v-img contain src="@/assets/images/eve.webp" class="h-100"></v-img> -->
           </v-col>
           <v-col class="white">
             <div class="px-5">
-              <h4 class="caption pt-3">Feb 22</h4>
+              <h4 class="caption pt-3">{{new Date(item.startDate)}}</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus ea vel vero at exercitationem odit modi cumque fugiat
-                obcaecati asperiores, assumenda aliquid, fuga iusto mollitia
-                unde praesentium sint ab. Ab.
+                {{item.theme}}
               </p>
-              <v-btn color="deep white--text" class="py-6 mt-5" elevation="2">
-                ATTEND</v-btn
-              >
+              <v-btn v-if="permissions.includes('edit_data')" @click="applyTraining" color="deep white--text" class="py-6 mt-5" elevation="2">
+              APPLY
+              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -39,22 +35,7 @@
         <v-row class="mt-3">
           <div>
             <h3>About this Event</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur aut maiores sunt dolorum adipisci alias vitae? Nobis
-              id, mollitia tenetur atque porro alias, expedita, soluta omnis
-              recusandae deleniti ipsum possimus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Quo consequuntur vero autem quidem
-              placeat illum expedita tenetur totam delectus corrupti similique
-              et reiciendis nulla, quae molestiae quas nobis rerum modi. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Quo
-              consequuntur vero autem quidem placeat illum expedita tenetur
-              totam delectus corrupti similique et reiciendis nulla, quae
-              molestiae quas nobis rerum modi. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Quo consequuntur vero autem quidem
-              placeat illum expedita tenetur totam delectus corrupti similique
-              et reiciendis nulla, quae molestiae quas nobis rerum modi.
-            </p>
+            <p>{{item.description}}</p>
           </div>
         </v-row>
       </div>
@@ -67,10 +48,36 @@
 import AppBar from "@/components/global_components/AppBar.vue";
 import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 import Footer from "@/components/global_components/FooterSection.vue";
+import { mapStores, mapState } from "pinia";
+import { useTrainingStore} from "@/stores/trainingStore";
+import {useUserStore } from "@/stores/userStore";
 
 export default {
   components: { AppBar, NavigationDrawer, Footer },
   name: "AboutEvent",
+  computed: {
+    ...mapState(useUserStore, ["permissions"]),
+    ...mapStores(useTrainingStore),
+  },
+  data() {
+    return {
+      item: null,
+    };
+  },
+ 
+ async created() {
+    if(this.trainingStore.training != null){
+      this.item = this.trainingStore.training;
+      return 
+    }
+   await this.trainingStore.setSingleTraining(this.$route.params.id);
+    this.item = this.trainingStore.training;
+  },
+  method: {
+    async applyTrainig(){
+      
+    }
+  }
 };
 </script>
 

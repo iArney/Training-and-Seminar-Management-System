@@ -17,128 +17,101 @@
               <v-card elevation="3">
                 <v-row class="mx-5 pt-10">
                   <v-col class="d-flex" cols="12" sm="6">
-                    <v-select :items="item" label="Category"></v-select>
-                  </v-col>
-                  <v-col cols="" sm="6">
                     <v-text-field
-                      v-model="lastname"
-                      :rules="nameRules"
-                      :counter="10"
-                      label="Venue"
+                      v-model="category"
+                      placeholder="Eg. Internet Security"
+                      label="Category"
                       required
-                    ></v-text-field>
+                    />
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
-                    <v-select :items="mode" label="Mode of Delivery"></v-select>
+                    <v-select
+                      :items="mode"
+                      v-model="delivery"
+                      label="Mode of Delivery"
+                    />
                   </v-col>
-
+                  <v-col v-if="delivery != 'Online'" cols="12" sm="6">
+                    <v-text-field
+                      v-model="venue"
+                      placeholder="E.g COICT DSM"
+                      label="Venue"
+                    />
+                  </v-col>
                   <v-col cols="" sm="6">
                     <v-text-field
-                      v-model="lastname"
-                      :rules="nameRules"
-                      :counter="10"
-                      label="Last name"
-                      required
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-textarea
-                      name="input-7-1"
-                      label="Description"
-                      hint="Brief explaination"
-                    ></v-textarea>
-                  </v-col>
-                  <v-col cols="" sm="6">
-                    <v-textarea
-                      name="input-7-1"
+                      v-model="topic"
                       label="Topic"
-                      hint="Brief explaination"
-                    ></v-textarea>
-                  </v-col>
-                  <v-col cols="12" sm="6">
-                    <v-text-field label="Cost" single-line></v-text-field>
+                      placeholder="E.g Internet security"
+                      required
+                    />
                   </v-col>
                   <v-col cols="12" sm="6">
                     <v-text-field
-                      label="Participant_Limit"
-                      single-line
+                      v-model="cost"
+                      label="Cost"
+                      type="number"
+                      min="0"
                     ></v-text-field>
                   </v-col>
-                  <v-menu
-                    ref="menu"
-                    v-model="menu"
-                    :close-on-content-click="false"
-                    :return-value.sync="date"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="date"
-                        label="Picker in menu"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker v-model="date" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn text color="primary" @click="menu = false">
-                        Cancel
-                      </v-btn>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="$refs.menu.save(date)"
-                      >
-                        OK
-                      </v-btn>
-                    </v-date-picker>
-                  </v-menu>
-                  <v-menu
-                    ref="menu2"
-                    v-model="menu2"
-                    :close-on-content-click="false"
-                    :return-value.sync="date"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="date"
-                        label="Picker in menu"
-                        prepend-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker v-model="date" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn text color="primary" @click="menu2 = false">
-                        Cancel
-                      </v-btn>
-                      <v-btn
-                        text
-                        color="primary"
-                        @click="$refs.menu2.save(date)"
-                      >
-                        OK
-                      </v-btn>
-                    </v-date-picker>
-                  </v-menu>
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      v-model="participantLimit"
+                      label="Participant_Limit"
+                      type="Number"
+                      min="1"
+                    />
+                  </v-col>
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      v-model="startDate"
+                      type="datetime-local"
+                      label="start Date"
+                      :min="`${today}T00:00`"
+                      required
+                    />
+                  </v-col>
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      v-model="endDate"
+                      type="datetime-local"
+                      label="End Date"
+                      :min="startDate"
+                      required
+                    />
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      v-model="theme"
+                      name="input-7-1"
+                      label="Theme"
+                      placeholder="E.g Internet security awareness for civil servants"
+                      hint="What is the training about"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-textarea
+                      v-model="description"
+                      label="Description"
+                      hint="Description of the training"
+                    ></v-textarea>
+                  </v-col>
+
                   <v-col cols="12"
                     ><v-btn
+                      :disabled="loading"
+                      @click="createTraining"
                       color="#004B8E"
                       elevation="2"
                       class="white--text float-end mx-2 my-2"
-                      >CREATE</v-btn
-                    ></v-col
-                  >
+                    >
+                      <div v-if="loading" class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <span v-else>CREATE</span>
+                    </v-btn>
+                  </v-col>
                 </v-row>
               </v-card>
             </v-form>
@@ -152,36 +125,69 @@
 </template>
 
 <script>
+import { createTraining } from "@/graphQLqueries/trainingQueries";
 import AppBar from "@/components/global_components/AppBar.vue";
 import FooterSection from "@/components/global_components/FooterSection.vue";
 import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
+import { useUserStore } from "@/stores/userStore";
+import { mapState } from "pinia";
+
+const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+  .toISOString()
+  .substr(0, 10);
+
 export default {
   name: "ApplicationForm",
   components: { AppBar, FooterSection, NavigationDrawer },
   data: () => ({
     item: ["Computer IT", "Finance", "Leadership", "Politics"],
-    mode: ["Free", "Paid"],
-    category: '',
-    venue: '',
-    modeOfDelivery: '',
-    description: '',
+    mode: ["Online", "Physical"],
+    category: "",
+    venue: "",
+    delivery: "",
+    description: "",
     cost: 0,
-    participantLimit: 0,
-    startDate: '',
-    endDate: '',
-    topic: '',
+    participantLimit: 50,
+    today: today,
+    theme: "",
+    startDate: `${today}T00:00:00`,
+    endDate: `${today}T00:00:00`,
+    startTime: "",
     menu: false,
     menu2: false,
     modal: false,
-    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-      .toISOString()
-      .substr(0, 10),
+    topic: "",
+    loading: false,
   }),
+  computed: {
+    ...mapState(useUserStore, ["user"]),
+  },
   methods: {
-    createTraining(){
+    async createTraining() {
+      try {
+        const trainingDetails = {
+          instituteId: this.user.institutionId.id,
+          category: this.category,
+          modeOfDelivery: this.delivery == "Online" ? 1 : 0,
+          venue: this.venue,
+          topic: this.topic,
+          cost: this.cost,
+          participantLimit: this.participantLimit,
+          theme: this.theme,
+          description: this.description,
+          startDate: this.startDate,
+          endDate: this.endDate,
+        };
 
-    }
-  }
+        this.loading == true;
+        await createTraining(trainingDetails);
+        this.loading = false;
+        this.$router.push("/dashboard");
+      } catch (error) {
+        this.loading = false;
+      }
+    },
+  },
 };
 </script>
 

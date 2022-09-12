@@ -24,14 +24,15 @@
               cols="12"
               sm="6"
               md="4"
-              lg="4"
-              v-for="(item, i) in items"
-              :key="i"
+              lg="3"
+              v-for="item in trainingStore.allTraining"
+              :key="item.id"
             >
               <EventCard
-                :image="item.image"
-                :name="item.name"
-                :mode="item.mode"
+                :id="item.id"
+                :image="require('@/assets/images/eve.webp')"
+                :name="item.topic"
+                :cost="item.cost"
               />
             </v-col>
           </v-row>
@@ -51,50 +52,20 @@ import AppBar from "@/components/global_components/AppBar.vue";
 import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 import Footer from "@/components/global_components/FooterSection.vue";
 import EventCard from "@/components/Microcomponents/EventCard.vue";
+import { mapStores } from "pinia";
+import { useTrainingStore } from "@/stores/trainingStore";
 export default {
   components: { AppBar, NavigationDrawer, Footer, EventCard },
   name: "EventCollection",
+  computed: {
+    ...mapStores(useTrainingStore),
+  },
+  async created() {
+    await this.trainingStore.setAllTraining(12, 0);
+  },
   data() {
     return {
       page: 1,
-      items: [
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-        {
-          image: require("@/assets/images/eve.webp"),
-          mode: "Free",
-          name: "IT Training",
-          state: "Scheduled",
-        },
-      ],
     };
   },
 };

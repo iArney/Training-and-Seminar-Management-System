@@ -4,8 +4,10 @@ export const registerUser = async (userData) => {
   const query = `mutation {
     register(email: "${userData.email}", 
     username:"${userData.username}",
-     password1: "${userData.password}",
-      password2:"${userData.confirmPassword}") {
+    password1: "${userData.password}",
+    password2:"${userData.confirmPassword},
+      
+      ") {
       success
       errors
       token
@@ -32,6 +34,11 @@ export const login = async (loginData) => {
         id
         username
         email
+        institutionId{
+          id
+          instituteName
+          instituteAbbreviation
+        }
       }
     }
   }

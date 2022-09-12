@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { allTraining, appliedTraining } from "@/graphQLqueries/trainingQueries";
+import { allTraining, appliedTraining, getCreatedTraining, getSingleTraining } from "@/graphQLqueries/trainingQueries";
 // import { getUser, getUserPermissions } from "@/graphQLqueries/userQueries";
 
 export const useTrainingStore = defineStore("training", {
@@ -8,12 +8,14 @@ export const useTrainingStore = defineStore("training", {
       appliedTraining: [],
       createdTraining: [],
       trainingRequests: [],
+      allTraining: [],
+      training: null,
     };
   },
   actions: {
-    async setCreatedTraining(limit, skip) {
+    async setCreatedTraining(id, limit, skip) {
       if (this.appliedTraining.length === 0) {
-        this.createdTraining = await allTraining(limit, skip);
+        this.createdTraining = await getCreatedTraining(id,limit, skip);
       }
     },
     async setAppliedTraining(limit, skip) {
@@ -22,13 +24,24 @@ export const useTrainingStore = defineStore("training", {
         console.log(this.appliedTraining, limit, skip);
       }
     },
+    async setAllTraining(limit, skip) {
+      if (this.allTraining.length === 0) {
+        this.allTraining = await allTraining(limit, skip);
+      }
+    },
+    async setSingleTraining(id) {
+        this.training = await getSingleTraining(id);
+        console.log(this.training);
+    },
   },
   getters: {
-    getCreatedTraining: (state) => {
-      if (state.createdTraining.length === 0) {
-        return "hello";
-      }
-      return this.appliedTraining;
+    getSpecificTraining(state) {
+      // console.log(state)
+      return (id) => state.allTraining.filter(item => item.id === id);
+      //   if (state.createdTraining.length === 0) {
+      //     return "hello";
+      //   }
+      //   return this.appliedTraining;
     },
   },
 });

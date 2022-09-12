@@ -68,8 +68,9 @@
                 md="12"
               >
                 <EventCard
+                  :id="item.id"
                   :image="require('@/assets/images/eve.webp')"
-                  :mode="item.cost"
+                  :cost="item.cost"
                   :name="item.topic"
                 />
               </v-col>
@@ -91,9 +92,9 @@ import ActivityCard from "@/components/Microcomponents/ActivityCard.vue";
 import EventCard from "@/components/Microcomponents/EventCard.vue";
 import EventsTable from "@/components/Microcomponents/EventsTable.vue";
 import { newTraining } from "@/graphQLqueries/trainingQueries";
-import { mapStores } from "pinia";
-import { useUserStore } from "@/stores/userStore";
+import { mapState, mapStores } from "pinia";
 import { useTrainingStore } from "@/stores/trainingStore";
+import { useUserStore } from '@/stores/userStore';
 
 export default {
   name: "AdminDashboard",
@@ -110,7 +111,8 @@ export default {
     EventsTable,
   },
   computed: {
-    ...mapStores(useUserStore, useTrainingStore),
+    ...mapStores(useTrainingStore),
+    ...mapState(useUserStore, ['user']),
     tableContent() {
       if (this.activeTab == "Applied Training") {
         return this.trainingStore.appliedTraining;
@@ -136,7 +138,7 @@ export default {
     // eslint-disable-next-line
     const [newTrainings] = await Promise.all([
       newTraining(),
-      this.trainingStore.setCreatedTraining(10, 0),
+      this.trainingStore.setCreatedTraining(this.user.institutionId.id,10, 0),
     ]);
     this.eventsUpdate = newTrainings;
   },

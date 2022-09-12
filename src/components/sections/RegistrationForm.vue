@@ -64,7 +64,7 @@
               />
             </v-col>
             <v-col cols="12" md="6">
-              <SelectInput :options="[]" />
+              <SelectInput v-model="institution" :options="institutions" />
             </v-col>
             <v-col cols="12" md="6">
               <TextInput
@@ -107,6 +107,7 @@
                 ></v-autocomplete>
               </v-col> -->
             <button
+              :disabled="loading"
               class="btn-submit btn mx-auto mt-10 deep white--text"
               @click="submit"
               type="button"
@@ -132,6 +133,7 @@ import SelectInput from "@/components/Microcomponents/SelectInput.vue";
 import { useRegisterStore } from "@/stores/registerStore";
 // import {mapState} from "pinia"
 import { mapStores } from "pinia";
+import { getAllInstitutions } from '@/graphQLqueries/trainingQueries';
 
 export default {
   components: {
@@ -149,6 +151,7 @@ export default {
       email: "",
       phone: "",
       institution: "",
+      institutions: ["hello", "world", "i", "am", "Brian"],
       designation: "",
       nida: "",
       password: "",
@@ -157,6 +160,9 @@ export default {
       passwordsMatch: true,
       loading: false,
     };
+  },
+  async created (){
+    this.institutions = await getAllInstitutions();
   },
   watch: {
     confirmPassword() {
@@ -176,7 +182,7 @@ export default {
     },
     async submit(e) {
       e.preventDefault();
-      
+
       if (
         this.registerStore.validated &&
         this.registerStore.invalidFields.length == 0
@@ -215,7 +221,7 @@ export default {
             return;
           }
 
-          console.log(response.errors)
+          console.log(response.errors);
           this.error = "Failed to register user, please try again";
         }
       }
@@ -241,14 +247,13 @@ export default {
   border-bottom: 4px solid #004b8e; /* This creates the border. Replace black with whatever color you want. */
 }
 
-input {
+input,select {
   background: #f4f9ff !important;
   border-radius: 0 !important;
   border-top: hidden !important;
   border-right: hidden !important;
   border-left: 3px solid #004b8e !important;
   border-bottom: hidden !important;
-
 }
 
 .btn-submit {

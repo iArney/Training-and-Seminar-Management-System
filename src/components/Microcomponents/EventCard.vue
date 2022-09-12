@@ -14,7 +14,7 @@
     </div>
 
     <v-card-subtitle class="green--text font-weight-bold">
-      {{ mode===0 ? "Free" : `Tsh ${mode}` }}
+      {{ cost=== 0  ? "Free" : `Tsh ${cost}` }}
     </v-card-subtitle>
     <v-card-actions>
       <v-card-title class="fs-6">
@@ -22,7 +22,7 @@
       </v-card-title>
 
       <v-spacer></v-spacer>
-      <router-link class="text-decoration-none" to="/about-event">
+      <router-link class="text-decoration-none" :to="`/about-event/${id}`">
         <v-btn color="deep" class="white--text me-2 zoom"> Attend </v-btn>
       </router-link>
     </v-card-actions>
@@ -33,13 +33,19 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+import { useTrainingStore } from '@/stores/trainingStore';
 export default {
   name: "EventCard",
   props: {
+    id:String,
     image: String,
-    mode: Number,
+    cost: Number,
     name: String,
   },
+  computed: {
+    ...mapState(useTrainingStore, ['trainingDetails'])
+  }
 };
 </script>
 

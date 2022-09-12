@@ -14,11 +14,12 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/about-event",
+    path: "/about-event/:id",
     name: "about-event",
-    meta:{
+    meta: {
       //if the route requires auth
-      requiresAuth: true, 
+      requiresAuth: true,
+      permissions: [],
       //set user permissions
       // permissions: ['edit_data'],
     },
@@ -34,43 +35,39 @@ const routes = [
     name: "create",
     meta: {
       requiresAuth: true,
-      permissions: ['edit_data'],
+      permissions: ["edit_data"],
     },
-    
-    component: () =>
-      import( "@/views/Create-Training.vue"),
+
+    component: () => import("@/views/Create-Training.vue"),
   },
   {
     path: "/events-collection",
     name: "eventcollection",
     meta: {
       requiresAuth: true,
+      permissions: []
     },
-    requiresAuth: true,
-    component: () =>
-      import( "@/views/EventCollection-View.vue"),
+
+    component: () => import("@/views/EventCollection-View.vue"),
   },
   {
     path: "/application-form",
     name: "applicationform",
     meta: {
       requiresAuth: true,
-      permissions: ['edit_data'],
+      permissions: ["edit_data"],
     },
-    component: () =>
-      import( "@/views/ApplicationForm-View.vue"),
+    component: () => import("@/views/ApplicationForm-View.vue"),
   },
   {
     path: "/login",
     name: "login",
-    component: () =>
-      import("@/views/Login-View.vue"),
+    component: () => import("@/views/Login-View.vue"),
   },
   {
     path: "/registration",
     name: "registration",
-    component: () =>
-      import("@/views/Registration-View.vue"),
+    component: () => import("@/views/Registration-View.vue"),
   },
   {
     path: "/dashboard",
@@ -79,8 +76,7 @@ const routes = [
       requiresAuth: true,
       permissions: [],
     },
-    component: () =>
-      import("../views/Dashboard-View.vue"),
+    component: () => import("../views/Dashboard-View.vue"),
   },
   {
     path: "/services",
@@ -89,28 +85,37 @@ const routes = [
       requiresAuth: true,
       permissions: [],
     },
-    component: () =>
-      import("../views/Services-View.vue"),
+    component: () => import("../views/Services-View.vue"),
   },
   {
     path: "/staff",
     name: "staff",
     meta: {
       requiresAuth: true,
-      permissions: ['edit_data'],
+      permissions: ["edit_data"],
     },
-    component: () =>
-      import("../views/Staff-View.vue"),
+    component: () => import("../views/Staff-View.vue"),
   },
   {
     path: "/staff-management",
     name: "staffManagement",
     meta: {
       requiresAuth: true,
-      permissions: ['edit_data'],
+      permissions: ["edit_data"],
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/StaffManagement-View.vue"),
+      import(
+        /* webpackChunkName: "about" */ "../views/StaffManagement-View.vue"
+      ),
+  },
+  {
+    path: "/training-nav",
+    name: "staff",
+    meta: {
+      requiresAuth: true,
+      permissions: [],
+    },
+    component: () => import("../views/OnlineTraining-View.vue"),
   },
 ];
 
@@ -151,7 +156,7 @@ router.beforeEach((to, from, next) => {
     /* If the user is logged in check if he has permission to access resources
      * if not remain to the current page
      */
-    if(route.meta.permissions.length === 0){
+    if (route.meta.permissions.length === 0) {
       return next();
     }
     if (hasRoutePermission(route.meta.permissions, userStore.permissions)) {

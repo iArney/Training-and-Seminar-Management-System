@@ -8,12 +8,6 @@
             <h1>Welcome to</h1>
             <h1 class="fw-bolder deep--text logo">TSMS</h1>
           </div>
-          <!-- <div class="logo-icon" style="padding: 20px; margin-left: 21rem">
-              <img src="@/assets/images/logo.webp" alt="tsms-logo" />
-            </div> -->
-          <!-- logo ends -->
-
-          <!-- login amico image -->
           <div class="image-icon text-center">
             <img
               class="mx-auto object-container login-image"
@@ -39,18 +33,7 @@
             </p>
           </div>
           <form action="" class="w-100 text-center">
-            <!-- <v-row>
-            <v-col cols="12" md="4" class="inputs">
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-                style="background-color: #fffeea"
-              ></v-text-field>
-            </v-col>
-          </v-row> -->
-
+  
             <TextInput
               label="Email"
               v-model="email"
@@ -65,23 +48,6 @@
               class="mb-5 text-start input"
               :icon="require('@/assets/icons/key.svg')"
             />
-            <!-- <v-row>
-            <v-col cols="12" sm="4" class="inputs">
-              <v-text-field
-                style="background-color: #fffeea"
-                required
-                v-model="password"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'password'"
-                name="input-10-1"
-                label="Enter Correct Password"
-                hint="Satisfactory!"
-                counter
-                @click:append="show1 = !show1"
-              ></v-text-field>
-            </v-col>
-          </v-row> -->
             <v-btn
               :disabled="loading"
               class="btn deep white--text p-4 mx-auto no-outline"
@@ -182,38 +148,5 @@ input {
     height: 270px !important;
   }
 }
-/* .login-card {
-  margin: 10rem auto;
-  height: 32rem;
-  width: 62rem;
-  text-align: center;
-}
-.logo-icon {
-  position: relative;
-  left: -2.5rem;
-}
-.logo-icon::before {
-  position: relative;
-  content: "Login with your provided credentials";
-  top: 48px;
-  left: 175px;
-  color: #0081c2;
-}
 
-.inputs {
-  position: relative;
-  left: 37rem;
-}
-
-.image-icon {
-  position: absolute;
-  top: 22px;
-  left: 53px;
-}
-
-.mr-4 {
-  position: relative;
-  left: 17rem;
-  top: 2rem;
-} */
 </style>
