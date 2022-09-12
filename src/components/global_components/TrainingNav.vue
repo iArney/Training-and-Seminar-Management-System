@@ -9,7 +9,7 @@
           max-width="100.86"
           max-height="85"
         />
-        <h4>[Internal] Weekly Report Marketing + Sales</h4>
+        <h5>[Internal] Weekly Report Marketing + Sales</h5>
         <v-spacer></v-spacer>
 
         <UserDetails color="#F6F66" />

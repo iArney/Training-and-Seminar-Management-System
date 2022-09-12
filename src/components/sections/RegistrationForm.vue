@@ -133,7 +133,7 @@ import SelectInput from "@/components/Microcomponents/SelectInput.vue";
 import { useRegisterStore } from "@/stores/registerStore";
 // import {mapState} from "pinia"
 import { mapStores } from "pinia";
-import { getAllInstitutions } from '@/graphQLqueries/trainingQueries';
+import { getAllInstitutions } from "@/graphQLqueries/trainingQueries";
 
 export default {
   components: {
@@ -161,7 +161,7 @@ export default {
       loading: false,
     };
   },
-  async created (){
+  async created() {
     this.institutions = await getAllInstitutions();
   },
   watch: {
@@ -206,7 +206,8 @@ export default {
         //store response.token, response.refreshtoken in local storage
         //check if success redirect to login
         if (response.success) {
-          this.$router.push("/login");
+
+          // this.$router.push("/login");
         } else {
           if (response.errors?.email) {
             this.error = response.errors?.email[0]?.message;
@@ -247,7 +248,8 @@ export default {
   border-bottom: 4px solid #004b8e; /* This creates the border. Replace black with whatever color you want. */
 }
 
-input,select {
+input,
+select {
   background: #f4f9ff !important;
   border-radius: 0 !important;
   border-top: hidden !important;
