@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import UserDetails from "../Microcomponents/userDetails.vue";
+import UserDetails from "@/components/Microcomponents/UserDetails.vue";
 import AppLogo from "./AppLogo.vue";
 import { useUserStore } from "@/stores/userStore";
 import { mapState } from "pinia";

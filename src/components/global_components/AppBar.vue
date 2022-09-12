@@ -70,7 +70,7 @@
 <script>
 import { mapWritableState } from "pinia";
 import { useNavigationStore } from "@/stores/NavigationStore";
-import UserDetails from "@/components/Microcomponents/userDetails.vue";
+import UserDetails from "@/components/Microcomponents/UserDetails.vue";
 
 export default {
   name: "AppBar",
