@@ -117,6 +117,11 @@ const routes = [
     },
     component: () => import("../views/OnlineTraining-View.vue"),
   },
+  {
+    path: "/training",
+    name: "training",
+    component: () => import("@/views/Training.vue"),
+  },
 ];
 
 const router = new VueRouter({

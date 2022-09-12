@@ -1,5 +1,5 @@
 <template>
-  <TraingNav />
+<div></div>
 </template>
 
 <script>
