@@ -15,19 +15,29 @@
           <v-col cols="6" class="lefttop">
             <div class="lefttop h-100 w-100 d-flex align-end">
               <v-toolbar class="tool-top" flat>
-                <span class="white--text font-weight-medium">{{item.topic}}</span>
+                <span class="white--text font-weight-medium">{{
+                  item.topic
+                }}</span>
               </v-toolbar>
             </div>
           </v-col>
           <v-col class="white">
             <div class="px-5">
-              <h4 class="caption pt-3">{{new Date(item.startDate)}}</h4>
+              <h4 class="caption pt-3">{{ new Date(item.startDate) }}</h4>
               <p>
-                {{item.theme}}
+                {{ item.theme }}
               </p>
-              <v-btn v-if="permissions.includes('edit_data')" @click="applyTraining" color="deep white--text" class="py-6 mt-5" elevation="2">
-              APPLY
-              </v-btn>
+              <router-link to="/application-form" class="text-decoration-none">
+                <v-btn
+                  v-if="permissions.includes('edit_data')"
+                  @click="applyTraining"
+                  color="deep white--text"
+                  class="py-6 mt-5"
+                  elevation="2"
+                >
+                  APPLY
+                </v-btn>
+              </router-link>
             </div>
           </v-col>
         </v-row>
@@ -35,7 +45,7 @@
         <v-row class="mt-3">
           <div>
             <h3>About this Event</h3>
-            <p>{{item.description}}</p>
+            <p>{{ item.description }}</p>
           </div>
         </v-row>
       </div>
@@ -49,8 +59,8 @@ import AppBar from "@/components/global_components/AppBar.vue";
 import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 import Footer from "@/components/global_components/FooterSection.vue";
 import { mapStores, mapState } from "pinia";
-import { useTrainingStore} from "@/stores/trainingStore";
-import {useUserStore } from "@/stores/userStore";
+import { useTrainingStore } from "@/stores/trainingStore";
+import { useUserStore } from "@/stores/userStore";
 
 export default {
   components: { AppBar, NavigationDrawer, Footer },
@@ -64,20 +74,18 @@ export default {
       item: null,
     };
   },
- 
- async created() {
-    if(this.trainingStore.training != null){
+
+  async created() {
+    if (this.trainingStore.training != null) {
       this.item = this.trainingStore.training;
-      return 
+      return;
     }
-   await this.trainingStore.setSingleTraining(this.$route.params.id);
+    await this.trainingStore.setSingleTraining(this.$route.params.id);
     this.item = this.trainingStore.training;
   },
   method: {
-    async applyTrainig(){
-      
-    }
-  }
+    async applyTrainig() {},
+  },
 };
 </script>
 

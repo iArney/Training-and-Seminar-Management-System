@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-5 mx-auto" max-width="344">
+  <v-card class="event-card mt-5 mx-auto" max-width="344">
     <div
       class="card-header"
       :style="{
@@ -66,5 +66,9 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+}
+.event-card{
+  height: 370px;
+
 }
 </style>

@@ -7,7 +7,7 @@
       />
     </v-container>
     <h1 class="mt-16 fw-bold border-deep pisition-relative">TSMS Modules</h1>
-    <v-container fluid>
+    <v-container fluid class="modules-container">
       <v-row class="text-center" no-gutters>
         <v-col
           v-for="(module, index) in modules.modules"
@@ -47,12 +47,16 @@ const modules = useModulesStore();
 </script>
 
 <style scoped>
+.modules-container{
+ max-width: 1300px;
+}
 #modules {
   background: url(@/assets/images/flag-tanzania.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Lato", sans-serif;
+ 
 }
 
 h1:after {

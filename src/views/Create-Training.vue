@@ -13,7 +13,7 @@
             </v-card>
           </div>
           <div>
-            <v-form class="form">
+            <v-form class="form" ref="form" lazy-validation>
               <v-card elevation="3">
                 <v-row class="mx-5 pt-10">
                   <v-col class="d-flex" cols="12" sm="6">
@@ -165,6 +165,7 @@ export default {
   methods: {
     async createTraining() {
       try {
+        //validate this form before submit;
         const trainingDetails = {
           instituteId: this.user.institutionId.id,
           category: this.category,

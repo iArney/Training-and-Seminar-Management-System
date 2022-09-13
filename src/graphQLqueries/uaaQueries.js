@@ -31,14 +31,23 @@ export const login = async (loginData) => {
 
 export const registerUser = async (userData) => {
   const query = `mutation {
-    register(email: "${userData.email}", 
+    createAccount(
+    email: "${userData.email}",
+    employId: "${userData.designation}",
+    firstName: "${userData.firstName}",
+    lastName: "${userData.lastName}",
+    institutionId: "${userData.institution}",
     username:"${userData.username}",
     password1: "${userData.password}",
-    password2:"${userData.confirmPassword},  
-      ") {
-      id
+    phoneNumber: "${userData.phone}",
+    nidaNo: "${userData.nida}",
+    ) {
+      user{
+        id
+        username
+        email
+      }
       success
-      errors
       token
       refreshToken
     }
@@ -48,7 +57,7 @@ export const registerUser = async (userData) => {
 
   const data = await response.json();
 
-  return data.data.register;
+  return data.data.createAccount;
 };
 
 export const updateUser = async (userDetails) => {
@@ -57,9 +66,9 @@ export const updateUser = async (userDetails) => {
       employId: "${userDetails.employId}", 
       firstName: "${userDetails.firstName}", 
       id: "${userDetails.id}", 
-      institutionId:"${userDetails.institutionId}", 
+      institutionId:"${userDetails.institution}", 
       lastName:"${userDetails.lastName}", 
-      nidaNo:"${userDetails.nidaNo}", 
+      nidaNo:"${userDetails.nida}", 
       phoneNumber:"${userDetails.phone}",){
       updateUser{
         id,
@@ -78,6 +87,6 @@ export const updateUser = async (userDetails) => {
 
   const data = await response.json();
 
-  return data.data.updateUser;
+  return data.data.updateUser.updateUser;
 };
 
