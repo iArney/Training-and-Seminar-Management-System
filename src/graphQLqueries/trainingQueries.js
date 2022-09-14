@@ -23,7 +23,6 @@ export const allTraining = async (limit, skip) => {
   return data.data.allTraining;
 };
 
-
 export const appliedTraining = async () => {
   const query = `query {
     allTrainingApplication {
@@ -42,6 +41,44 @@ export const appliedTraining = async () => {
   const data = await response.json();
 
   return data.data.allTrainingApplication;
+};
+
+export const applyTraining = async (applicationDetails) => {
+  const query = `mutation {
+    createTrainingApplication(
+      instituteId: "${applicationDetails.email}", 
+      particioantNo:"${applicationDetails.participantNo}",
+      requestType:${applicationDetails.requestType},
+      trainingId:${applicationDetails.training},
+      ) {
+      id
+      startDate
+      topic
+      modeOfDelivery
+      status
+      traininigId{
+        institutionAbbreviation
+      }
+      token
+      refreshToken
+      user{
+        id
+        username
+        email
+        institutionId{
+          id
+          instituteName
+          instituteAbbreviation
+        }
+      }
+    }
+  }
+  `;
+  const response = await apiClient(query);
+
+  const data = await response.json();
+
+  return data.data.tokenAuth;
 };
 
 export const getAllInstitutions = async () => {
@@ -72,7 +109,7 @@ export const createTraining = async (training) => {
       modeOfDelivery:${training.modeOfDelivery}, 
       endDate: "${training.startDate}", 
       startDate: "${training.endDate}",
-      extraVenueName: "${training?.venue || ''}",
+      extraVenueName: "${training?.venue || ""}",
       theme:"${training.theme}") {
      createTraining {
       id,

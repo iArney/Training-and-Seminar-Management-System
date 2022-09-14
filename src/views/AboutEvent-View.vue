@@ -27,7 +27,6 @@
               <p>
                 {{ item.theme }}
               </p>
-              <router-link to="/application-form" class="text-decoration-none">
                 <v-btn
                   v-if="permissions.includes('edit_data')"
                   @click="applyTraining"
@@ -37,7 +36,6 @@
                 >
                   APPLY
                 </v-btn>
-              </router-link>
             </div>
           </v-col>
         </v-row>
@@ -83,8 +81,10 @@ export default {
     await this.trainingStore.setSingleTraining(this.$route.params.id);
     this.item = this.trainingStore.training;
   },
-  method: {
-    async applyTrainig() {},
+  methods: {
+    async applyTraining() {
+      console.log("applied")
+    },
   },
 };
 </script>
