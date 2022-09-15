@@ -26,13 +26,21 @@ export const allTraining = async (limit, skip) => {
 export const appliedTraining = async () => {
   const query = `query {
     allTrainingApplication {
-      createdAt,
-      requestType,
-      participantNo,
-      statusFeedback,
+      id
+      requestType
       instituteId{
+        id
+        instituteName
         instituteAbbreviation
       }
+      trainingId{
+        id
+        topic
+        startDate
+        modeOfDelivery
+      }
+      statusFeedback
+      participantNo
     }
   }`;
 
@@ -46,39 +54,37 @@ export const appliedTraining = async () => {
 export const applyTraining = async (applicationDetails) => {
   const query = `mutation {
     createTrainingApplication(
-      instituteId: "${applicationDetails.email}", 
-      particioantNo:"${applicationDetails.participantNo}",
+      instituteId: "${applicationDetails.institution}", 
+      participantNo:${applicationDetails.participants},
       requestType:${applicationDetails.requestType},
-      trainingId:${applicationDetails.training},
-      ) {
+      trainingId:"${applicationDetails.training}",
+    ){
+    createTraining{
       id
-      startDate
-      topic
-      modeOfDelivery
-      status
-      traininigId{
-        institutionAbbreviation
-      }
-      token
-      refreshToken
-      user{
+      requestType
+      instituteId{
         id
-        username
-        email
-        institutionId{
-          id
-          instituteName
-          instituteAbbreviation
-        }
+        instituteName
+        instituteAbbreviation
       }
+      trainingId{
+        id
+        topic
+        startDate
+        modeOfDelivery
+      }
+      statusFeedback
+      participantNo
     }
   }
+}
+   
   `;
   const response = await apiClient(query);
 
   const data = await response.json();
 
-  return data.data.tokenAuth;
+  return data.data.createTrainingApplication.createTraining;
 };
 
 export const getAllInstitutions = async () => {

@@ -26,20 +26,20 @@
               :key="index"
               class="py-3"
             >
-              <td>{{ new Date(item.startDate) }}</td>
-              <td>{{ item.topic }}</td>
+              <td>{{ new Date(item.trainingId.startDate) }}</td>
+              <td>{{ item.trainingId.topic }}</td>
               <td>
-                {{ item.modeOfDelivery === "A_0" ? "Physical" : "Online" }}
+                {{ item.trainingId.modeOfDelivery === "A_0" ? "Physical" : "Online" }}
               </td>
-              <td v-if="item.status === 'A_0'">Upcoming</td>
-              <td v-if="item.status === 'A_1'">OnGoing</td>
-              <td v-if="item.status === 'A_2'">Cancelled</td>
-              <td v-if="item.status === 'A_3'">Postponded</td>
+              <td v-if="item.statusFeedback === 'A_0'">Pending Approval</td>
+              <td v-if="item.statusFeedback === 'A_1'">Accepted</td>
+              <td v-if="item.statusFeedback === 'A_2'">Accepted with changes</td>
             </tr>
           </tbody>
         </template>
       </v-simple-table>
       <div class="white pb-5 text-center">
+        <!---In place of the 2 put the totalFiles/numberPerPage-->
         <v-btn
           @click="queryPage(n)"
           :key="n"
@@ -86,9 +86,5 @@ export default {
 .active {
   background: #004b8e !important;
   color:  #f5f9ff!important;
-}
-
-tr:hover{
-  cursor: pointer;
 }
 </style>

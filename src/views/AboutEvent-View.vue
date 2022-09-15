@@ -2,6 +2,22 @@
   <div>
     <AppBar />
     <NavigationDrawer />
+    <div class="text-center">
+      <v-dialog v-model="dialog" width="500">
+        <v-card class="py-5 px-3">
+          <p>
+            You have successfully placed a request for {{ item.topic }} training
+            to be held on {{ new Date(item.startDate) }}. You when your request
+            is approved.
+          </p>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="deep" text @click="dialog = false"> OK </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
     <v-container class="content-wrapper py-16 px-md-16 mt-10" fluid>
       <div class="content pt-8 pb-16 mx-auto">
         <router-link to="/events-collection" class="text-decoration-none">
@@ -27,15 +43,19 @@
               <p>
                 {{ item.theme }}
               </p>
-                <v-btn
-                  v-if="permissions.includes('edit_data')"
-                  @click="applyTraining"
-                  color="deep white--text"
-                  class="py-6 mt-5"
-                  elevation="2"
-                >
-                  APPLY
-                </v-btn>
+              <v-btn
+                :disabled="loading"
+                v-if="permissions.includes('edit_data')"
+                @click="applyTraining"
+                color="deep white--text"
+                class="py-6 mt-5"
+                elevation="2"
+              >
+                <div v-if="loading" class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <span v-else> APPLY</span>
+              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -56,6 +76,7 @@
 import AppBar from "@/components/global_components/AppBar.vue";
 import NavigationDrawer from "@/components/global_components/NavigationDrawer.vue";
 import Footer from "@/components/global_components/FooterSection.vue";
+import { applyTraining } from "@/graphQLqueries/trainingQueries";
 import { mapStores, mapState } from "pinia";
 import { useTrainingStore } from "@/stores/trainingStore";
 import { useUserStore } from "@/stores/userStore";
@@ -64,12 +85,14 @@ export default {
   components: { AppBar, NavigationDrawer, Footer },
   name: "AboutEvent",
   computed: {
-    ...mapState(useUserStore, ["permissions"]),
+    ...mapState(useUserStore, ["permissions", "user"]),
     ...mapStores(useTrainingStore),
   },
   data() {
     return {
       item: null,
+      loading: false,
+      dialog: false,
     };
   },
 
@@ -83,7 +106,21 @@ export default {
   },
   methods: {
     async applyTraining() {
-      console.log("applied")
+      const applicationDetails = {
+        training: this.item.id,
+        institution: this.user.institutionId.id,
+        requestType: 0,
+        participants: 40,
+      };
+      this.loading = true;
+
+      const response = await applyTraining(applicationDetails);
+      if(response.id){
+         this.dialog = true;
+      }
+      this.loading = false;
+     
+      console.log(response);
     },
   },
 };

@@ -21,7 +21,7 @@ export const useTrainingStore = defineStore("training", {
     async setAppliedTraining(limit, skip) {
       if (this.appliedTraining.length === 0) {
         this.appliedTraining = await appliedTraining();
-        console.log(this.appliedTraining, limit, skip);
+        console.log(limit, skip);
       }
     },
     async setAllTraining(limit, skip) {
@@ -31,8 +31,10 @@ export const useTrainingStore = defineStore("training", {
     },
     async setSingleTraining(id) {
         this.training = await getSingleTraining(id);
-        console.log(this.training);
     },
+    async setTrainngRequests(){
+      console.log("hello");
+    }
   },
   getters: {
     getSpecificTraining(state) {

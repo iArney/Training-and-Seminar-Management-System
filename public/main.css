@@ -1,4 +1,3 @@
-/*** This file contains CSS ***/
 #app {
   font-family: "Lato", sans-serif !important;
 }
@@ -24,7 +23,7 @@
 
 .no-outline:focus {
   outline: none !important;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 /*** Effects *****/
 /**decorations***/
