@@ -92,7 +92,7 @@ Location of the routes of the application.
 ### > src/stores
 Location of global pinia stores form managing states of the components
 
-### > src/stores
+### > src/views
 Location of page view components of project
 
 ### > src/useAPIClient.js
