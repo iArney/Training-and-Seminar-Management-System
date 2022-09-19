@@ -109,13 +109,18 @@ const routes = [
       ),
   },
   {
-    path: "/training",
-    name: "training",
+    path: "/online-training",
+    name: "online-training",
     meta: {
       requiresAuth: true,
       permissions: [],
     },
     component: () => import("../views/OnlineTraining-View.vue"),
+  },
+  {
+    path: "/training",
+    name: "training",
+    component: () => import("@/views/Training.vue"),
   },
 ];
 

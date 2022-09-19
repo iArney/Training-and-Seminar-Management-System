@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="px-lg-16 light shadow">
-      <v-app-bar color="white" elevation="0" class="py-1" height="100px">
+    <div class="light shadow">
+      <v-app-bar elevation="0" class="py-1" height="100px">
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
         <v-img
           src="@/assets/images/logo.webp"
@@ -9,7 +9,7 @@
           max-width="100.86"
           max-height="85"
         />
-        <h4>[Internal] Weekly Report Marketing + Sales</h4>
+        <h5>[Internal] Weekly Report Marketing + Sales</h5>
         <v-spacer></v-spacer>
 
         <UserDetails color="#F6F66" />

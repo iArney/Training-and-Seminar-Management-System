@@ -1,7 +1,7 @@
 <template>
   <div
   @click="$emit('changeTab', activityName)"
-    class="pt-6 shadow white text-center mx-auto"
+    class="pt-6 shadow white text-center mx-auto zoom"
     style="width: 240.75px; height: 159.07px"
   >
     <div class="d-flex justify-center mx-auto">
@@ -9,7 +9,6 @@
 
       <div class="ms-2">
         <span class="fw-bold">{{ activityName }}</span>
-        <span class="sub-head"><p>&#40;scheduled&#41;</p></span>
       </div>
     </div>
 

@@ -1,19 +1,19 @@
 <template>
   <v-main class="light">
     <v-container class="mt-7">
-      <v-row>
-        <v-col cols="12" sm="4">
+      <v-row class="card-container" no-gutters>
+        <v-col cols="12" sm="6">
           <ActivityCard
             @changeTab="setActiveTab($event)"
             :icon="require('@/assets/images/online-course-1.webp')"
-            activityName="Created Training"
+            activityName="Attended Training"
             :activityNumber="6"
         /></v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="6">
           <ActivityCard
             @changeTab="setActiveTab($event)"
             :icon="require('@/assets/images/online-course-2.webp')"
-            activityName="Applied Training"
+            activityName="Upcoming Training"
             :activityNumber="10"
           />
         </v-col>
@@ -25,14 +25,14 @@
             :activityNumber="2"
           />
         </v-col> -->
-        <v-col cols="12" sm="4">
+        <!-- <v-col cols="12" sm="4">
           <ActivityCard
             @changeTab="setActiveTab($event)"
             :icon="require('@/assets/images/online-course-4.webp')"
             activityName="Training Requests"
             :activityNumber="0"
           />
-        </v-col>
+        </v-col> -->
       </v-row>
     </v-container>
     <v-container class="mt-7" fluid>
@@ -108,7 +108,7 @@ export default {
     return {
       createdTraining: [],
       eventsUpdate: [],
-      activeTab: "Created Training",
+      activeTab: "Attended Training",
     };
   },
   components: {
@@ -156,4 +156,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card-container{
+    max-width: 600px
+}
+</style>

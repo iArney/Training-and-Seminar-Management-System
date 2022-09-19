@@ -68,7 +68,7 @@
             </v-col>
             <v-col cols="12" md="6">
               <TextInput
-                label="Designation"
+                label="Employee id"
                 v-model="designation"
                 required
                 :icon="require('@/assets/icons/structure 1.svg')"
@@ -127,13 +127,13 @@
 </template>
 
 <script>
-import { registerUser } from "@/graphQLqueries/uaaQueries";
+import { registerUser, } from "@/graphQLqueries/uaaQueries";
 import TextInput from "@/components/Microcomponents/TextInput.vue";
 import SelectInput from "@/components/Microcomponents/SelectInput.vue";
 import { useRegisterStore } from "@/stores/registerStore";
 // import {mapState} from "pinia"
 import { mapStores } from "pinia";
-import { getAllInstitutions } from '@/graphQLqueries/trainingQueries';
+import { getAllInstitutions } from "@/graphQLqueries/trainingQueries";
 
 export default {
   components: {
@@ -161,7 +161,7 @@ export default {
       loading: false,
     };
   },
-  async created (){
+  async created() {
     this.institutions = await getAllInstitutions();
   },
   watch: {
@@ -206,22 +206,27 @@ export default {
         //store response.token, response.refreshtoken in local storage
         //check if success redirect to login
         if (response.success) {
+        //   const updateDetails = {
+        //     ...userData, 
+        //     employId: "2020-04-13095"
+        //   }
+        //  await updateUser(updateDetails)
           this.$router.push("/login");
         } else {
-          if (response.errors?.email) {
-            this.error = response.errors?.email[0]?.message;
-            return;
-          }
-          if (response.errors?.username) {
-            this.error = response.errors?.username[0]?.message;
-            return;
-          }
-          if (response.errors?.password) {
-            this.error = response.errors?.password[0]?.message;
-            return;
-          }
+          // if (response.errors?.email) {
+          //   this.error = response.errors?.email[0]?.message;
+          //   return;
+          // }
+          // if (response.errors?.username) {
+          //   this.error = response.errors?.username[0]?.message;
+          //   return;
+          // }
+          // if (response.errors?.password) {
+          //   this.error = response.errors?.password[0]?.message;
+          //   return;
+          // }
 
-          console.log(response.errors);
+          // console.log(response.errors);
           this.error = "Failed to register user, please try again";
         }
       }
@@ -247,14 +252,7 @@ export default {
   border-bottom: 4px solid #004b8e; /* This creates the border. Replace black with whatever color you want. */
 }
 
-input,select {
-  background: #f4f9ff !important;
-  border-radius: 0 !important;
-  border-top: hidden !important;
-  border-right: hidden !important;
-  border-left: 3px solid #004b8e !important;
-  border-bottom: hidden !important;
-}
+
 
 .btn-submit {
   max-width: 147px;

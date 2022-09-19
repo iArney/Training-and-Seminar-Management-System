@@ -6,7 +6,7 @@
       class="drawer pt-8"
       app
     >
-      <div v-if="$vuetify.breakpoint.smAndDown" class="text-end pe-5 mb-5">
+      <div v-if="$vuetify.breakpoint.mdAndDown" class="text-end pe-5 mb-5">
         <button
           id="sideNavToggler"
           @click="drawerOpen = false"

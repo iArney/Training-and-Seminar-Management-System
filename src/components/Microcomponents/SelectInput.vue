@@ -50,4 +50,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+select {
+  background: #f4f9ff !important;
+  border-radius: 0 !important;
+  border-top: hidden !important;
+  border-right: hidden !important;
+  border-left: 3px solid #004b8e !important;
+  border-bottom: hidden !important;
+}
+</style>
